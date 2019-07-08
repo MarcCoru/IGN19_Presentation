@@ -1,68 +1,7 @@
 
 \begin{frame}
-\frametitle{Multi-temporal Vegetation Monitoring}
-
-\begin{columns}
-	\column{.5\textwidth}
-	
-	\begin{tikzpicture}
-		\node[] at (0,0){\includegraphics[width=\textwidth]{images/Large1954_cerial_growth_stages}};
-		
-%		\draw[step=1.0,black,thin, fill=none] (-2,-2) grid (2,2);
-		
-		\visible<-1>{\draw [fill=white, draw=none, opacity=0.8] (-0.8,-3) rectangle (2,2.5);}
-		\visible<-2>{\draw [fill=white, draw=none, opacity=0.8] (2,-3) rectangle (5,2.5);}
-		
-		\visible<1>{\node[rotate=190] at (-2.5,1.5){\includegraphics[width=15mm]{images/icons/sat2}};}
-		\visible<2>{\node[rotate=225] at (-2.5,1.5){\includegraphics[width=15mm]{images/icons/sat2}};}
-		\visible<3->{\node[rotate=260] at (-2.5,1.5){\includegraphics[width=15mm]{images/icons/sat2}};}
-		
-		
-		\visible<4->{\node at (-1.5,1.4) {\includegraphics[width=10mm]{images/cloud}};
-		}
-		
-	\end{tikzpicture}
-	
-	\column{.5\textwidth}
-	
-	{\Large
-	\only<1>{
-	\begin{equation*}
-		\V{y} = f_\text{phenology}(\V{X}_t)
-	\end{equation*}
-	}
-	\only<2>{
-		\begin{equation*}
-		\V{y} = f_\text{phenology}(\V{X}_t,\V{X}_{t+1})
-		\end{equation*}
-	}
-	\only<3>{
-		\begin{equation*}
-		\V{y} = f_\text{phenology}(\V{X}_t,\V{X}_{t+1},\V{X}_{t+2})
-		\end{equation*}
-	}
-	}
-	
-	
-	\vspace{2em}
-
-	
-	\visible<1->{\includegraphics[width=.22\textwidth]{images/s2grid/1}}
-	\visible<2->{\includegraphics[width=.22\textwidth]{images/s2grid/2}}
-	\visible<3->{\includegraphics[width=.22\textwidth]{images/s2grid/3}}
-	\visible<4->{\includegraphics[width=.22\textwidth]{images/s2grid/4}}
-	
-	\vspace{1em}
-	
-	{\small 
-		Large, E. C. (1954). Growth stages in cereals illustration of the Feekes scale. Plant pathology, 3(4), 128-129.
-	}
-	
-	
-\end{columns}
-
-
-
+	\frametitle{Area of Interest in Bavaria}
+	\includegraphics[width=\textwidth]{images/aoi}
 \end{frame}
 
 
@@ -131,87 +70,49 @@
 \def\fps{3}
 \input{images/cells.tikz}
 
-%\begin{frame}[t]
-%	\frametitle{Convolutional Long-Short Term Memory Cells (ConvLSTM)}
-%	
-%	%	Reveal Sequence:
-%	%	1: update, empty cell
-%	%	2: forget gate
-%	%	3: input gate + modulation gate + jmult
-%	%	4: output gate
-%	%	5: cell state
-%	%	6: output
-%	
-%	\begin{columns}
-%		\begin{column}{0.3\textwidth}
-%			\begin{tabularx}{\textwidth}{l}
-%				LSTM update: \\
-%				$\VHidden_t,\VCellState_t  \leftarrow \VInput_t, \VHidden_{t-1}, \VCellState_{t-1}$\\
-%				\\
-%				\visible<2->{Internal gates:} \\
-%				\visible<2->{$\VForgetGate_t = \sigma( \conv{\concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_f } + 1 )$} \\
-%				\visible<3->{$\VInputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_i } ) $} \\
-%				\visible<3->{$\VModulationGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_j } ) $} \\
-%				\visible<4->{$\VOutputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_o} ) $} \\
-%				\\
-%				\visible<5->{Internal cell state:} \\
-%				\visible<5->{$\VCellState_t = \VCellState_{t-1} \odot \VForgetGate_t + \VInputGate_t \odot \VModulationGate_t$} \\
-%				\visible<6->{Output:} \\
-%				\visible<6->{$\VHidden_t= \VOutputGate_t \odot \tanh(\VCellState_t) $} \\
-%			\end{tabularx}
-%		\end{column}
-%		\begin{column}{0.7\textwidth}
-%			\lstmexplain
-%		\end{column}
-%	\end{columns}
-%\end{frame}
+\begin{frame}[t]
+	\frametitle{Convolutional Long-Short Term Memory Cells (ConvLSTM)}
+	
+	%	Reveal Sequence:
+	%	1: update, empty cell
+	%	2: forget gate
+	%	3: input gate + modulation gate + jmult
+	%	4: output gate
+	%	5: cell state
+	%	6: output
+	
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\begin{tabularx}{\textwidth}{l}
+				LSTM update: \\
+				$\VHidden_t,\VCellState_t  \leftarrow \VInput_t, \VHidden_{t-1}, \VCellState_{t-1}$\\
+				\\
+				\visible<2->{Internal gates:} \\
+				\visible<2->{$\VForgetGate_t = \sigma( \conv{\concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_f } + 1 )$} \\
+				\visible<3->{$\VInputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_i } ) $} \\
+				\visible<3->{$\VModulationGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_j } ) $} \\
+				\visible<4->{$\VOutputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_o} ) $} \\
+				\\
+				\visible<5->{Internal cell state:} \\
+				\visible<5->{$\VCellState_t = \VCellState_{t-1} \odot \VForgetGate_t + \VInputGate_t \odot \VModulationGate_t$} \\
+				\visible<6->{Output:} \\
+				\visible<6->{$\VHidden_t= \VOutputGate_t \odot \tanh(\VCellState_t) $} \\
+			\end{tabularx}
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			\lstmexplain
+		\end{column}
+	\end{columns}
+\end{frame}
 
 
 %\input{images/encoder.tikz}
 
 
-\begin{frame}
-\frametitle{Classification ConvLSTM Network}
-\input{images/network.tikz}
-\end{frame}
-
-
-\begin{frame}
-
-\vfill
-\Huge\color{black}
-\begin{center}
-	\begin{columns}
-		\column{\textwidth}
-		\vspace{7em}
-		
-		\textbf{\color{tumbluedark}Surprise:} 
-		\hfill It worked without specifically labeling clouds!
-%		\only<1>{Surprise:} \only<2>{It worked without labeling clouds!}
-		%			\includegraphics[width=5cm]{images/dscovrepic/epic1}
-		%\includegraphics[width=7cm]{images/fdl}
-	\end{columns}
-\end{center}
-
-\vfill
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{ConvLSTM robust to clouds}
-\input{images/scl.tikz}
-\input{images/clouds.tikz}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Remembering Karpathy's "Unreasonable Effectiveness of RNNs"}
-	
-	\includegraphics[width=\textwidth]{images/karpathy}
-	
-	\url{http://karpathy.github.io/2015/05/21/rnn-effectiveness/}
-\end{frame}
+%\begin{frame}
+%\frametitle{Classification ConvLSTM Network}
+%\input{images/network.tikz}
+%\end{frame}
 
 
 \begin{frame}[t]
@@ -241,6 +142,65 @@
 
 \end{frame}
 
+\begin{frame}
+\frametitle{Classification ConvLSTM Network}
+
+\centering\includegraphics[width=.8\textwidth]{images/lstm}
+
+	\small
+\textsl{
+	Rußwurm M., Körner M. (2018). \textbf{Multi-Temporal Land Cover Classification with Sequential Recurrent Encoders}. In ISPRS International Journal of Geo-Information. 
+}
+
+\end{frame}
+
+
+%{
+%	\setbeamercolor{background canvas}{bg=tumbluedark}
+
+\begin{frame}
+
+\vfill
+\Huge\color{black}
+\begin{center}
+	\begin{columns}
+		\column{\textwidth}
+		
+		
+		\includegraphics[width=\textwidth]{images/x_1}
+		\includegraphics[width=\textwidth]{images/x_2}
+		\includegraphics[width=\textwidth]{images/x_3}
+		
+		\vspace{3em}
+		
+		
+		\textbf{\color{tumbluedark}Surprise:} 
+		\hfill It worked without specifically labeling clouds!
+%		\only<1>{Surprise:} \only<2>{It worked without labeling clouds!}
+		%			\includegraphics[width=5cm]{images/dscovrepic/epic1}
+		%\includegraphics[width=7cm]{images/fdl}
+	\end{columns}
+\end{center}
+
+\vfill
+
+\end{frame}
+%}
+
+\begin{frame}
+\frametitle{ConvLSTM robust to clouds}
+\input{images/scl.tikz}
+\input{images/clouds.tikz}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Remembering Karpathy's "Unreasonable Effectiveness of RNNs"}
+	
+	\includegraphics[width=\textwidth]{images/karpathy}
+	
+	\url{http://karpathy.github.io/2015/05/21/rnn-effectiveness/}
+\end{frame}
 
 \input{images/activations.tikz}
 \begin{frame}

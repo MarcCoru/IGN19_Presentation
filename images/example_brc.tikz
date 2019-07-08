@@ -1,0 +1,195 @@
+\tikzsetnextfilename{example}
+
+%\newcommand{\wv}[2]{$\lambda_\text{#1}=#2$}
+\newcommand{\wv}[2]{$\rho_\text{#2}$}
+
+
+\newcommand{\examplemeadows}{
+
+\begin{tikzpicture}
+
+
+\tikzstyle{annot} = [font=\tiny\sffamily, text=tumblue]
+\tikzstyle{point} = [thin, tumbluelight, shorten >= .25em, shorten <= .25em]
+
+% from /home/marc/projects/EV2019/images/example/tstop.txt
+\def\tstopv{0.6285714285714286}
+\def\class{winter barley}
+
+\begin{axis}[date coordinates in=x,
+date ZERO=2017-01-01,
+xmin=2017-01-01,
+xmax=2017-12-31,
+ylabel near ticks,
+ylabel style={font=\sffamily\small, rotate=0, yshift=-.5em},
+width=.95\linewidth,
+height=5cm,
+axis x line=bottom,
+axis y line=left,
+%	enlarge x limits=0.01,
+xtick={2017-01-01,2017-05-01,2017-08-01,2017-12-01},
+xticklabels={January,April,August,December},
+ymajorgrids,
+ymax=10000,
+thin,
+smooth,
+no marks,  
+ylabel={$\rho \times 10^4$},
+draw opacity=.8,
+%		tension=0.001,
+legend columns=8,
+%y tick label style={rotate=90},
+%legend to name=leg,
+legend style={at={(.5,1.1)},anchor=south, line width=1pt, fill=tumblue!10}
+]
+
+%\addlegendimage{empty legend}
+
+
+\addplot[b1color] table [x=doa, y=B1, col sep=comma] {images/example/3685593.csv};
+\addplot[b2color] table [x=doa, y=B2, col sep=comma] {images/example/3685593.csv};
+\addplot[b3color] table [x=doa, y=B3, col sep=comma] {images/example/3685593.csv};
+\addplot[b4color] table [x=doa, y=B4, col sep=comma] {images/example/3685593.csv};
+\addplot[b5color] table [x=doa, y=B5, col sep=comma] {images/example/3685593.csv};
+\addplot[b6color] table [x=doa, y=B6, col sep=comma] {images/example/3685593.csv};
+\addplot[b7color] table [x=doa, y=B7, col sep=comma] {images/example/3685593.csv};
+\addplot[b8color] table [x=doa, y=B8, col sep=comma] {images/example/3685593.csv};
+\addplot[b8Acolor] table [x=doa, y=B8A, col sep=comma] {images/example/3685593.csv};
+\addplot[b9color] table [x=doa, y=B9, col sep=comma] {images/example/3685593.csv};
+\addplot[b10color] table [x=doa, y=B10, col sep=comma] {images/example/3685593.csv};
+\addplot[b11color] table [x=doa, y=B11, col sep=comma] {images/example/3685593.csv};
+\addplot[b12color] table [x=doa, y=B12, col sep=comma] {images/example/3685593.csv};
+
+%\node[above=of leg]{test};
+%
+%\addlegendentry{$\sqrt{x}$}
+%\addlegendentry{$\ln{x}$}
+%
+%\addlegendentry[xshift=-10pt, font=\bfseries]{S2 Satellite Bands}
+
+\addlegendentry{\wv{B01}{443nm}}
+\addlegendentry{\wv{B2}{492nm}}
+\addlegendentry{\wv{B3}{560nm}}
+\addlegendentry{\wv{B4}{665nm}}
+\addlegendentry{\wv{B5}{704nm}}
+\addlegendentry{\wv{B6}{740nm}}
+\addlegendentry{\wv{B7}{783nm}}
+\addlegendentry{\wv{B8}{833nm}}
+\addlegendentry{\wv{B8A}{864nm}}
+\addlegendentry{\wv{B9}{945nm}}
+\addlegendentry{\wv{B10}{1374nm}}
+\addlegendentry{\wv{B12}{2202nm}}
+
+%\legend{
+%\wv{B01}{443nm},
+%\wv{B2}{492nm},
+%\wv{B3}{560nm},
+%\wv{B4}{665nm},
+%\wv{B5}{704nm},
+%\wv{B6}{740nm},
+%\wv{B7}{783nm},
+%\wv{B8}{833nm},
+%\wv{B8A}{864nm},
+%\wv{B9}{945nm},
+%\wv{B10}{1374nm},
+%\wv{B11}{1613nm},
+%\wv{B12}{2202nm}}
+
+
+\end{axis}
+
+
+%\node[font=\scriptsize\sffamily, anchor=west] at (0.2,2.7) {Sentinel 2 Satellite Spectral Bands};
+
+
+\end{tikzpicture}
+}
+
+
+\newcommand{\examplecorn}{
+	
+	\begin{tikzpicture}
+	
+	\tikzstyle{annot} = [font=\tiny\sffamily, text=tumblue]
+	\tikzstyle{point} = [thin, tumbluelight, shorten >= .25em, shorten <= .25em]
+	
+	% from /home/marc/projects/EV2019/images/example/tstop.txt
+	\def\tstopv{0.6285714285714286}
+	\def\class{winter barley}
+	
+	\begin{axis}[date coordinates in=x,
+	date ZERO=2017-01-01,
+	xmin=2017-01-01,
+	xmax=2017-12-31,
+	ylabel near ticks,
+	ylabel style={font=\sffamily\small, rotate=0, yshift=-.5em},
+	width=.95\linewidth,
+	height=5cm,
+	axis x line=bottom,
+	axis y line=left,
+	%	enlarge x limits=0.01,
+	xtick={2017-01-01,2017-05-01,2017-08-01,2017-12-01},
+	xticklabels={January,April,August,December},
+	ymajorgrids,
+	ymax=10000,
+	thin,
+	smooth,
+	no marks,  
+	ylabel={$\rho \times 10^4$},
+	draw opacity=.8,
+	%		tension=0.001,
+	legend columns=8,
+	%y tick label style={rotate=90},
+	legend style={at={(.5,1)},anchor=south, line width=1pt, fill=tumblue!10}
+	]
+	
+	
+	\addplot[b1color] table [x=doa, y=B1, col sep=comma] {images/example/6139251.csv};
+	\addplot[b9color] table [x=doa, y=B9, col sep=comma] {images/example/6139251.csv};
+	\addplot[b10color] table [x=doa, y=B10, col sep=comma] {images/example/6139251.csv};
+	
+	\addplot[b11color] table [x=doa, y=B11, col sep=comma] {images/example/6139251.csv};
+	\addplot[b12color] table [x=doa, y=B12, col sep=comma] {images/example/6139251.csv};
+	
+	\addplot[b5color] table [x=doa, y=B5, col sep=comma] {images/example/6139251.csv};
+	\addplot[b6color] table [x=doa, y=B6, col sep=comma] {images/example/6139251.csv};
+	\addplot[b7color] table [x=doa, y=B7, col sep=comma] {images/example/6139251.csv};
+	\addplot[b8color] table [x=doa, y=B8, col sep=comma] {images/example/6139251.csv};
+	\addplot[b8Acolor] table [x=doa, y=B8A, col sep=comma] {images/example/6139251.csv};
+	
+	\addplot[b2color] table [x=doa, y=B2, col sep=comma] {images/example/6139251.csv};
+	\addplot[b3color] table [x=doa, y=B3, col sep=comma] {images/example/6139251.csv};
+	\addplot[b4color] table [x=doa, y=B4, col sep=comma] {images/example/6139251.csv};
+	
+	\node[font=\sffamily] at (rel axis cs:0.35,0.9)(gr){ground signal};
+	\draw (gr) -- (rel axis cs:.26,.3);
+	\draw (gr) -- (rel axis cs:.2,.3);
+	\draw (gr) -- (rel axis cs:.4,.25);
+	
+	\node[font=\sffamily] at (rel axis cs:0.8,.93)(cl){cloud noise};
+	
+	\draw (cl) -- (rel axis cs:.68,.7);
+	\draw (cl) -- (rel axis cs:.58,.7);
+	\draw (cl) -- (rel axis cs:.81,.7);
+	
+%	\legend{3 atmospheric, 2 short-wave infrared, 5 near infrared, 3 visible bands}
+%	
+	
+	\addlegendentry{\wv{B01}{443nm}}
+	\addlegendentry{\wv{B2}{492nm}}
+	\addlegendentry{\wv{B3}{560nm}}
+	\addlegendentry{\wv{B4}{665nm}}
+	\addlegendentry{\wv{B5}{704nm}}
+	\addlegendentry{\wv{B6}{740nm}}
+	\addlegendentry{\wv{B7}{783nm}}
+	\addlegendentry{\wv{B8}{833nm}}
+	\addlegendentry{\wv{B8A}{864nm}}
+	\addlegendentry{\wv{B9}{945nm}}
+	\addlegendentry{\wv{B10}{1374nm}}
+	\addlegendentry{\wv{B12}{2202nm}}
+	
+
+	\end{axis}
+	
+	\end{tikzpicture}
+}
