@@ -1,0 +1,332 @@
+% Data selection parameters %
+
+% precision or recall
+% \newcommand{\precisionrecall}{recall}
+%\newcommand{\precisionrecall}{precision}
+
+\tikzstyle{markrect}=[tumred,thick]
+
+%\tikzsetnextfilename{confmat}
+\begin{tikzpicture}
+
+  \pgfplotsset{every axis label/.append style={font=\footnotesize},tick pos=right, ylabel near ticks}
+  
+  \pgfplotsset{
+    axis line style={%
+      opacity=0 
+    }   
+  }
+  
+  %\pgfplotsset{every y tick label/.append style={rotate=0,anchor=south east,font=\scriptsize}}
+
+%\begin{groupplot}[
+%	group style = {group size = 1 by 1},
+%	height = 10cm,
+%	width = 10cm,
+%	ymin = 500,
+%	xticklabels from table = {\Data}{Day}, xtick = {1,...,19},
+%	xticklabel style = {rotate = 90, xshift = -0.8ex, anchor = mid east}
+%	]
+%	\nextgroupplot[xmin = 1, xmax = 19, ymax = 900]
+
+  \begin{groupplot}[
+  	group style={
+  		group size=2 by 1,
+  		xlabels at=edge bottom,
+  		ylabels at=edge left,
+  		xticklabels at=edge bottom,
+  		vertical sep=35pt,
+  		group name=seq_len_plot
+  	},
+  	title style={yshift=.75em,},
+    width=6cm,
+    height=6cm,
+    enlargelimits=false,
+    xtick=data,
+%     ymin=1,
+    xtick distance=1,
+    ytick distance=1,
+    colormap={example}{%
+		color=(tumwhite)%color=(tumbluelight)
+		color=(tumblue)%color=(tumbluelight)
+		color=(tumblack)%color=(tumbluedark)
+	},
+    ytick=data,
+    ytick align=outside,
+    tick style={draw=none},
+    ytick pos = left,  
+    yticklabel style = {yshift=-0mm, rotate=0,anchor=east,font=\scriptsize},
+    xticklabel style = {yshift=-0mm, rotate=90,font=\scriptsize},
+    %xticklabel = {xshift=-0.75cm}
+    yticklabel pos=left,
+    %yticklabel near ticks,
+    xlabel={predicted class},
+%    xlabel style={yshift=-2em},
+    x label style={at={(axis description cs:0.5,1.1)},anchor=south},
+    y label style={at={(axis description cs:-0.55,.5)},anchor=south},
+    ylabel={ground truth class},
+%     ylabel near ticks,
+    xticklabels={},
+  ]
+  \nextgroupplot[title=2016,
+      yticklabels={
+      	\classname{sugar beet},
+      	\classname{summer oat},
+      	\classname{meadow},
+      	\classname{rape},
+      	%\classname{vegetable},
+      	\classname{hop},
+      	\classname{winter spelt},
+      	\classname{winter triticale},
+      	\classname{beans},
+      	\classname{peas},
+      	\classname{potato},
+      	\classname{soybeans},
+      	\classname{asparagus},
+      	\classname{winter wheat},
+      	\classname{winter barley},
+      	\classname{winter rye},
+      	\classname{summer barley},
+      	\classname{maize}
+      },
+      xticklabels={
+      	\classname{sug.},
+      	\classname{s. oat},
+      	\classname{mead.},
+      	\classname{rape},
+      	%\classname{vegetable},
+      	\classname{hop},
+      	\classname{w. spelt},
+      	\classname{w. trit.},
+      	\classname{beans},
+      	\classname{peas},
+      	\classname{potato},
+      	\classname{soyb.},
+      	\classname{asp.},
+      	\classname{w. wheat},
+      	\classname{w. barley},
+      	\classname{w. rye},
+      	\classname{s. barley},
+      	\classname{maize}
+      },
+  ]
+  
+    \addplot[
+      matrix plot,
+%      draw=tumwhite,
+%       nodes near coords=\coordindex,
+%       nodes near coords align={center},
+%       nodes near coords style={font=\scriptsize},
+        shader=faceted,
+        faceted color=tumgraylight,
+%       shader=faceted interp,
+      mesh/cols=17,
+      empty line=scanline,
+      point meta=explicit,
+      point meta min=0,
+      point meta max=1,
+    ] table[meta index=\dataindex] {images/confmat/formatted_grucm2016.csv};
+    
+   	\only<2|handout:0>{
+   		
+   		% summer oat <-> summer barley
+   		\draw [markrect] (axis cs:15.5,1.5) rectangle (axis cs:16.5,2.5);
+   		\draw [markrect] (axis cs:1.5,15.5) rectangle (axis cs:2.5, 16.5);
+   		
+   		% triticale <-> rye
+   		\draw [markrect] (axis cs:6.5,14.5) rectangle (axis cs:7.5,15.5);
+   		\draw [markrect] (axis cs:14.5,6.5) rectangle (axis cs:15.5,7.5);
+   		
+   	}
+   	
+ 		\only<3|handout:0>{
+ 			% asymmetric consistent
+ 			
+ 			% triticale <-> wheat
+ 			\draw [markrect] (axis cs:6.5,12.5) rectangle (axis cs:7.5,13.5);
+ 			\draw [markrect] (axis cs:12.5,6.5) rectangle (axis cs:13.5, 7.5);
+ 			
+ 			% triticale <-> wheat
+ 			\draw [markrect] (axis cs:6.5,13.5) rectangle (axis cs:7.5,14.5);
+ 			\draw [markrect] (axis cs:13.5,6.5) rectangle (axis cs:14.5, 7.5);
+ 			
+			% spelt <-> wheat
+			\draw [markrect] (axis cs:5.5,12.5) rectangle (axis cs:6.5,13.5);
+			\draw [markrect] (axis cs:12.5,5.5) rectangle (axis cs:13.5, 6.5);
+ 			
+ 			% maize <-> asp
+ 			\draw [markrect] (axis cs:16.5,11.5) rectangle (axis cs:17.5,12.5);
+ 			\draw [markrect] (axis cs:11.5,16.5) rectangle (axis cs:12.5, 17.5);
+ 		}
+    
+    \only<4|handout:0>{
+    	% not tempoprally consistent
+    	
+    	% spelt <-> wheat
+    	\draw [markrect] (axis cs:12.5,5.5) rectangle (axis cs:13.5,6.5);
+    	
+    	% spelt <-> rye
+    	\draw [markrect] (axis cs:14.5,5.5) rectangle (axis cs:15.5,6.5);
+    	
+    	% spelt <-> trit
+    	\draw [markrect] (axis cs:6.5,5.5) rectangle (axis cs:7.5,6.5);
+    	
+    	% meadow <-> peas
+    	\draw [markrect] (axis cs:2.5,8.5) rectangle (axis cs:3.5,9.5);
+    	
+    	% mead <-> summer barley
+    	\draw [markrect] (axis cs:2.5,15.5) rectangle (axis cs:3.5,16.5);
+    	
+    	% mead <-> summer barley
+    	\draw [markrect] (axis cs:2.5,15.5) rectangle (axis cs:3.5,16.5);
+    	
+    	% pot <-> soybeans
+    	\draw [markrect] (axis cs:9.5,10.5) rectangle (axis cs:10.5,11.5);
+    	
+    }
+    
+   \nextgroupplot[
+       title=2017,
+       %colorbar style={title={\precisionrecall}, xshift=0cm, font=\footnotesize},
+       colorbar right,
+       colorbar style={
+       	title={\cbartitle}, 
+       	font=\footnotesize,
+       	%at={(0,1)},
+       	anchor=north west,
+       	width=8pt,
+       	ticklabel pos=right,
+       	ticklabel style={xshift=1em},
+       	label style={yshift=1em},
+       	rounded corners=1pt
+       },
+       yticklabels={},
+     xticklabels={
+           	\classname{sug.},
+           	\classname{s. oat},
+           	\classname{mead.},
+           	\classname{rape},
+           	%\classname{vegetable},
+           	\classname{hop},
+           	\classname{w. spelt},
+           	\classname{w. trit.},
+           	\classname{beans},
+           	\classname{peas},
+           	\classname{potato},
+           	\classname{soyb.},
+           	\classname{asp.},
+           	\classname{w. wheat},
+           	\classname{w. barley},
+           	\classname{w. rye},
+           	\classname{s. barley},
+           	\classname{maize}
+     },
+       ]
+    
+    \addplot[
+    matrix plot,
+%    draw=tumwhite,
+    ,   
+    %       nodes near coords=\coordindex,
+    %       nodes near coords align={center},
+    %       nodes near coords style={font=\scriptsize},
+    shader=faceted,
+    faceted color=tumgraylight,
+    %       shader=faceted interp,
+    mesh/cols=17,
+    empty line=scanline,
+    point meta=explicit,
+    point meta min=0,
+    point meta max=1,
+    ] table[meta index=\dataindex] {images/confmat/formatted_grucm2017.csv};
+    
+%    \node at (axis cs:1,1) {P3};
+
+
+
+
+\only<2|handout:0>{
+	% symmetric consistent
+	
+	% summer oat <-> summer barley
+	\draw [markrect] (axis cs:15.5,1.5) rectangle (axis cs:16.5,2.5);
+	\draw [markrect] (axis cs:1.5,15.5) rectangle (axis cs:2.5, 16.5);
+	
+	% triticale <-> rye
+	\draw [markrect] (axis cs:6.5,14.5) rectangle (axis cs:7.5,15.5);
+	\draw [markrect] (axis cs:14.5,6.5) rectangle (axis cs:15.5,7.5);
+	
+}
+
+\only<3|handout:0>{
+	% asymmetric consistent
+	
+	% triticale <-> wheat
+	\draw [markrect] (axis cs:6.5,12.5) rectangle (axis cs:7.5,13.5);
+	\draw [markrect] (axis cs:12.5,6.5) rectangle (axis cs:13.5, 7.5);
+	
+	% barley <-> wheat
+	\draw [markrect] (axis cs:6.5,13.5) rectangle (axis cs:7.5,14.5);
+	\draw [markrect] (axis cs:13.5,6.5) rectangle (axis cs:14.5, 7.5);
+	
+	% spelt <-> wheat
+	\draw [markrect] (axis cs:5.5,12.5) rectangle (axis cs:6.5,13.5);
+	\draw [markrect] (axis cs:12.5,5.5) rectangle (axis cs:13.5, 6.5);
+	
+	% maize <-> asp
+	\draw [markrect] (axis cs:16.5,11.5) rectangle (axis cs:17.5,12.5);
+	\draw [markrect] (axis cs:11.5,16.5) rectangle (axis cs:12.5, 17.5);
+}
+
+%	beet 0.5
+%	oat 1.5
+%	meadow 2.5
+%	rape 3.5
+%	hop 4.5
+%	spelt 5.5
+%	triti 6.5
+%	beans 7.5
+%	peas 8.5
+%	potato 9.5
+%	soybeans 10.5
+%	asp 11.5
+%	wwheat 12.5
+%	barley 13.5
+%	rye 14.5
+%	sbarley 15.5
+%	maize 16.5
+
+\only<4|handout:0>{
+	% not tempoprally consistent
+	
+	% spelt <-> wheat
+	\draw [markrect] (axis cs:12.5,5.5) rectangle (axis cs:13.5,6.5);
+	
+	% spelt <-> rye
+	\draw [markrect] (axis cs:14.5,5.5) rectangle (axis cs:15.5,6.5);
+	
+	% spelt <-> trit
+	\draw [markrect] (axis cs:6.5,5.5) rectangle (axis cs:7.5,6.5);
+	
+	% meadow <-> peas
+	\draw [markrect] (axis cs:2.5,8.5) rectangle (axis cs:3.5,9.5);
+	
+	% mead <-> summer barley
+	\draw [markrect] (axis cs:2.5,15.5) rectangle (axis cs:3.5,16.5);
+	
+	% mead <-> summer barley
+	\draw [markrect] (axis cs:2.5,15.5) rectangle (axis cs:3.5,16.5);
+	
+	% pot <-> soybeans
+	\draw [markrect] (axis cs:9.5,10.5) rectangle (axis cs:10.5,11.5);
+	
+}
+
+	
+	% triticale <-> rye
+%	\draw [markrect] (axis cs:6.5,14.5) rectangle (axis cs:7.5,15.5);
+%	\draw [markrect] (axis cs:14.5,6.5) rectangle (axis cs:15.5,7.5);
+  \end{groupplot}
+  
+%  \end{groupplot}
+\end{tikzpicture}

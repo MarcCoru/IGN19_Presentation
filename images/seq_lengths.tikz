@@ -1,0 +1,119 @@
+%usepgfplotslibrary{fillbetween}
+
+%\newcommand{\fbopacity}{0.3}
+%\newcommand{\skippoints}{2}
+
+
+	
+\tikzsetnextfilename{seq_lengths}
+\begin{tikzpicture}[]
+
+\def\measure{oa}
+
+\colorlet{t10color}{tumblue}
+\colorlet{t20color}{tumgray}
+\colorlet{t30color}{tumorange}
+\colorlet{t40color}{tumgreen}
+
+\def\year{2016}
+
+\pgfplotsset{every axis plot/.append style={line width=1pt}}
+
+	\begin{groupplot}[
+	group style={
+		group size=2 by 1,
+		xlabels at=edge bottom,
+		ylabels at=edge left,
+		xticklabels at=edge bottom,
+		vertical sep=35pt,
+		group name=seq_len_plot
+	},
+	legend style={
+		at={(.5,-.6)},
+		anchor=south,
+		fill=tumgraylight,
+		rounded corners,
+		draw=none,
+		font=\scriptsize, 
+		/tikz/every even column/.append style={column sep=0.2cm},
+		},
+	axis lines=left,
+	grid=both,
+	grid style={draw=tumgraylight},
+	legend columns=4,
+	width=.8\textwidth,
+	height=4cm,
+	xlabel={samples seen},
+	ylabel={overall accuracy},
+	xmin=-10000,
+	xmax=1500000,
+	ymin=0.2,
+	ymax=.92]
+	
+	\nextgroupplot[title=Trained on 2016,name=plot]
+	
+	%% averaged folds
+	\addplot[t10color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_2016_test_oa.csv};
+	\addlegendentry{10 observations};
+	
+	\addplot[t20color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_2016_test_oa.csv};
+	\addlegendentry{20 observations};
+	
+	\addplot[t30color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_2016_test_oa.csv};
+	\addlegendentry{30 observations};
+	
+	\addplot[t40color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_2016_test_oa.csv};
+	\addlegendentry{40 observations};
+	
+	%\nextgroupplot[title=Validation performance 2017]
+	\addplot[t10color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_2017_test_oa.csv};
+	
+	\addplot[t20color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_2017_test_oa.csv};
+	
+	\addplot[t30color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_2017_test_oa.csv};
+	
+	\addplot[t40color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_2017_test_oa.csv};
+	
+	
+	
+	%% single folds
+%	\addplot[t10color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_f1_2016_test_oa.csv};
+%	\addplot[t10color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_f0_2016_test_oa.csv};
+%	\addlegendentry{10 observations}
+%	
+%	\addplot[t20color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_f1_2016_test_oa.csv};
+%	\addplot[t20color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_f0_2016_test_oa.csv};
+%	\addlegendentry{20 observations}
+%	
+%	\addplot[t30color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_f1_2016_test_oa.csv};
+%	\addplot[t30color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_f0_2016_test_oa.csv};
+%	\addlegendentry{30 observations}
+%	
+%	\addplot[t40color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_f1_2016_test_oa.csv};
+%	\addplot[t40color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_f0_2016_test_oa.csv};
+%	\addlegendentry{40 observations}
+%	
+%	%\nextgroupplot[title=Validation performance 2017]
+%	\addplot[t10color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_f1_2017_test_oa.csv};
+%	\addplot[t10color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t10_f0_2017_test_oa.csv};
+%	
+%	\addplot[t20color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_f1_2017_test_oa.csv};
+%	\addplot[t20color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t20_f0_2017_test_oa.csv};
+%	
+%	\addplot[t30color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_f1_2017_test_oa.csv};
+%	\addplot[t30color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t30_f0_2017_test_oa.csv};
+%	
+%	\addplot[t40color,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_f1_2017_test_oa.csv};
+%	\addplot[t40color] table [x index = {0}, y index = {1}, col sep=comma] {images/seq_lengths/convlstm128_t40_f0_2017_test_oa.csv};
+	
+	
+	
+  \end{groupplot}
+  
+  % not very elegant...
+  \node[text width=7em,anchor=west] at ($ (plot.north east)+(0,-.1) $) {\small 2016 validation};
+  \node[text width=7em,anchor=west] at ($ (plot.south east)+(0,.8) $) {\small 2017 validation};
+  %	\node[text width=5em] at (axis cs:1.6,0.41) {2017 validation};
+  
+  
+\end{tikzpicture}  

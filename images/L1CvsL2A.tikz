@@ -1,0 +1,280 @@
+%usepgfplotslibrary{fillbetween}
+
+%\newcommand{\fbopacity}{0.3}
+%\newcommand{\skippoints}{2}
+
+
+\def\measure{oa}
+\def\height{3.5cm}
+
+
+\colorlet{L1Ccolor}{tumblue}
+\colorlet{L2Acolor}{tumblack}
+
+%\colorlet{2017traincolor}{tumgray}
+%\colorlet{2017testcolor}{tumblack}
+
+\tikzset{new spy style/.style={spy scope={%
+			magnification=2,
+			connect spies,
+			every spy on node/.style={
+				rectangle,
+				rounded corners=1pt,
+				draw,
+			},
+			every spy in node/.style={
+				draw,
+				rectangle,
+				rounded corners=1pt,
+				fill=gray!40,
+			}
+		}
+	}
+} 
+
+\newcommand{\figatcor}{
+\tikzsetnextfilename{L1CvsL2A}
+\begin{tikzpicture}[new spy style]
+	
+	% replaced by global settings in figures.tex
+%	\pgfplotsset{every axis plot/.append style={line width=1pt}}
+	
+	\begin{groupplot}[
+	group style={
+		group size=2 by 2,
+		xlabels at=edge bottom,
+		ylabels at=edge left,
+		xticklabels at=edge bottom,
+		vertical sep=15pt,
+		group name=trainplot
+	},
+	legend style={
+		at={(-.1,-.9)},
+		anchor=south,
+		fill=tumgraylight,
+		rounded corners,
+		draw=none,
+		font=\small, 
+		legend image post style={line width =2pt},
+		/tikz/every even column/.append style={column sep=0.2cm},
+	},
+	axis lines=left,
+	grid=both,
+	scaled x ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	grid style={draw=tumgraylight},
+	legend columns=2,
+	width=.5\textwidth,
+	height=\height,
+	xlabel={samples seen},
+	xmin=-10000,
+	xmax=800000,
+	ymin=.2,
+	ymax=1]
+
+\nextgroupplot[align=center, title={BOA and TOA \\ \small trained/inferred respectively (fold 1)},ylabel={ov. acc.}]
+\addplot[L1Ccolor, forget plot] table [x=Step, y = L1C_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+
+\addplot[L2Acolor, forget plot] table [x=Step, y = L2A_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+%\addlegendentry{\acrfull{boa}}
+
+\coordinate (t1) at (axis cs:100000,.8);
+\coordinate (t2) at (axis cs:400000,.85);
+\coordinate (t3) at (axis cs:700000,.85);
+
+\coordinate (c1) at (rel axis cs:.4,.3);
+\coordinate (c2) at (rel axis cs:.6,.3);
+\coordinate (c3) at (rel axis cs:.8,.3);
+
+\spy[tumblue,size=1cm] on (t1) in node [fill=tumbluelight!20] at (c1);
+\spy[tumblue,size=1cm] on (t2) in node [fill=tumbluelight!20] at (c2);
+\spy[tumblue,size=1cm] on (t3) in node [fill=tumbluelight!20] at (c3);
+
+\nextgroupplot[align=center, title={BOA and TOA \\ \small trained/inferred respectively (fold 2)},ylabel={}]
+\addplot[L1Ccolor,forget plot] table [x=Step, y = L1Cf2_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+
+\addplot[L2Acolor,forget plot] table [x=Step, y = L2Af2_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+\coordinate (magnifyglass3) at (axis cs:800000,.8);
+
+\coordinate (tt1) at (axis cs:100000,.8);
+\coordinate (tt2) at (axis cs:400000,.85);
+\coordinate (tt3) at (axis cs:700000,.85);
+
+\coordinate (cc1) at (rel axis cs:.4,.3);
+\coordinate (cc2) at (rel axis cs:.6,.3);
+\coordinate (cc3) at (rel axis cs:.8,.3);
+
+\spy[tumblue,size=1cm] on (tt1) in node [fill=tumbluelight!20] at (cc1);
+\spy[tumblue,size=1cm] on (tt2) in node [fill=tumbluelight!20] at (cc2);
+\spy[tumblue,size=1cm] on (tt3) in node [fill=tumbluelight!20] at (cc3);
+
+\nextgroupplot[ymax=2,ylabel={cross entr.}]
+\addplot[L1Ccolor, forget plot] table [x=Step, y = L1C_test2016_xe, col sep=comma] {images/L1CvsL2A/train.csv};
+\addplot[L2Acolor, forget plot] table [x=Step, y = L2A_test2016L2A_xe, col sep=comma] {images/L1CvsL2A/train.csv};
+
+\coordinate (ttt1) at (axis cs:100000,.8);
+\coordinate (ttt2) at (axis cs:400000,.4);
+\coordinate (ttt3) at (axis cs:700000,.4);
+
+\coordinate (ccc1) at (rel axis cs:.4,.7);
+\coordinate (ccc2) at (rel axis cs:.6,.7);
+\coordinate (ccc3) at (rel axis cs:.8,.7);
+
+\spy[tumblue,size=1cm] on (ttt1) in node [fill=tumbluelight!20] at (ccc1);
+\spy[tumblue,size=1cm] on (ttt2) in node [fill=tumbluelight!20] at (ccc2);
+\spy[tumblue,size=1cm] on (ttt3) in node [fill=tumbluelight!20] at (ccc3);
+
+\nextgroupplot[ymax=2, ylabel={}]
+\addplot[L1Ccolor] table [x=Step, y = L1Cf2_test2016_xe, col sep=comma] {images/L1CvsL2A/train.csv};
+\addlegendentry{\acrfull{toa}}
+\addplot[L2Acolor] table [x=Step, y = L2Af2_test2016L2A_xe, col sep=comma] {images/L1CvsL2A/train.csv};
+\addlegendentry{\acrfull{boa}}
+
+\coordinate (tttt1) at (axis cs:100000,.8);
+\coordinate (tttt2) at (axis cs:400000,.4);
+\coordinate (tttt3) at (axis cs:700000,.4);
+
+\coordinate (cccc1) at (rel axis cs:.4,.7);
+\coordinate (cccc2) at (rel axis cs:.6,.7);
+\coordinate (cccc3) at (rel axis cs:.8,.7);
+
+\spy[tumblue,size=1cm] on (tttt1) in node [fill=tumbluelight!20] at (cccc1);
+\spy[tumblue,size=1cm] on (tttt2) in node [fill=tumbluelight!20] at (cccc2);
+\spy[tumblue,size=1cm] on (tttt3) in node [fill=tumbluelight!20] at (cccc3);
+
+%
+%\nextgroupplot[title=Trained on L1C data]
+%\addplot[L1Ccolor,forget plot] table [x=Step, y = L2A_test2016_mean, col sep=comma] {images/L1CvsL2A/train.csv};
+%\addplot[L2Acolor,forget plot] table [x=Step, y = L2A_test2016L2A_mean, col sep=comma] {images/L1CvsL2A/train.csv};
+
+%\addplot[2017testcolor,forget plot] table [x index = {0}, y index = {1}, col sep=comma] {images/multiyear/convlstm128_first2016_later20162017_2017_test_\measure.csv};
+
+
+%\nextgroupplot[title=Training first on 2016 then on 2017]
+%\addplot[2016testcolor] table [x index = {0}, y index = {1}, col sep=comma] {images/multiyear/convlstm128_first2016_later2017_2016_test_\measure.csv};
+%\addlegendentry{2016 validation dataset}
+%
+%\addplot[2017testcolor] table [x index = {0}, y index = {1}, col sep=comma] {images/multiyear/convlstm128_first2016_later2017_2017_test_\measure.csv};
+%\addlegendentry{2017 validation dataset}
+
+\end{groupplot}
+\end{tikzpicture}  
+}
+
+\newcommand{\figatcorproject}{
+	\tikzsetnextfilename{atcorproject}
+	\begin{tikzpicture}[new spy style]
+	
+	% replaced by global settings in figures.tex
+	%	\pgfplotsset{every axis plot/.append style={line width=1pt}}
+	
+	\begin{groupplot}[
+	group style={
+		group size=2 by 2,
+		xlabels at=edge bottom,
+		ylabels at=edge left,
+		xticklabels at=edge bottom,
+		vertical sep=45pt,
+		group name=trainplot
+	},
+	legend style={
+		at={(-.1,-.9)},
+		anchor=south,
+		fill=tumgraylight,
+		rounded corners,
+		draw=none,
+		font=\small, 
+		legend image post style={line width =2pt},
+		/tikz/every even column/.append style={column sep=0.2cm},
+	},
+	axis lines=left,
+	grid=both,
+	scaled x ticks = false,
+	y tick label style={/pgf/number format/fixed},
+	grid style={draw=tumgraylight},
+	legend columns=2,
+	width=.5\textwidth,
+	height=\height,
+	xlabel={samples seen},
+	xmin=-10000,
+	xmax=800000,
+	ymin=.2,
+	ymax=1]
+	
+	\nextgroupplot[align=center, title={TOA trained \\ TOA/BOA inferred (fold1)},ylabel={ov. acc.}]
+	\addplot[L1Ccolor, forget plot] table [x=Step, y = L1C_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	
+	\addplot[L2Acolor, forget plot] table [x=Step, y = L1C_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	%\addlegendentry{\acrfull{boa}}
+	
+	\coordinate (t1) at (axis cs:100000,.8);
+	\coordinate (t2) at (axis cs:400000,.85);
+	\coordinate (t3) at (axis cs:700000,.85);
+	
+	\coordinate (c1) at (rel axis cs:.4,.3);
+	\coordinate (c2) at (rel axis cs:.6,.3);
+	\coordinate (c3) at (rel axis cs:.8,.3);
+	
+	\spy[tumblue,size=1cm] on (t1) in node [fill=tumbluelight!20] at (c1);
+	\spy[tumblue,size=1cm] on (t2) in node [fill=tumbluelight!20] at (c2);
+	\spy[tumblue,size=1cm] on (t3) in node [fill=tumbluelight!20] at (c3);
+	
+	\nextgroupplot[align=center, title={BOA trained \\ BOA/TOA inferred (fold1)},ylabel={}]
+	\addplot[L1Ccolor,forget plot] table [x=Step, y = L2A_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	
+	\addplot[L2Acolor,forget plot] table [x=Step, y = L2A_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	\coordinate (magnifyglass3) at (axis cs:800000,.8);
+	
+	\coordinate (tt1) at (axis cs:100000,.8);
+	\coordinate (tt2) at (axis cs:400000,.85);
+	\coordinate (tt3) at (axis cs:700000,.85);
+	
+	\coordinate (cc1) at (rel axis cs:.4,.3);
+	\coordinate (cc2) at (rel axis cs:.6,.3);
+	\coordinate (cc3) at (rel axis cs:.8,.3);
+	
+	\spy[tumblue,size=1cm] on (tt1) in node [fill=tumbluelight!20] at (cc1);
+	\spy[tumblue,size=1cm] on (tt2) in node [fill=tumbluelight!20] at (cc2);
+	\spy[tumblue,size=1cm] on (tt3) in node [fill=tumbluelight!20] at (cc3);
+	
+	\nextgroupplot[title={TOA/BOA inferred (fold2)},ylabel={ov. acc.}]
+	\addplot[L1Ccolor, forget plot] table [x=Step, y = L1Cf2_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	
+	\addplot[L2Acolor, forget plot] table [x=Step, y = L1Cf2_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	%\addlegendentry{\acrfull{boa}}
+	
+	\coordinate (ttt1) at (axis cs:100000,.8);
+	\coordinate (ttt2) at (axis cs:400000,.85);
+	\coordinate (ttt3) at (axis cs:700000,.85);
+	
+	\coordinate (ccc1) at (rel axis cs:.4,.3);
+	\coordinate (ccc2) at (rel axis cs:.6,.3);
+	\coordinate (ccc3) at (rel axis cs:.8,.3);
+	
+	\spy[tumblue,size=1cm] on (ttt1) in node [fill=tumbluelight!20] at (ccc1);
+	\spy[tumblue,size=1cm] on (ttt2) in node [fill=tumbluelight!20] at (ccc2);
+	\spy[tumblue,size=1cm] on (ttt3) in node [fill=tumbluelight!20] at (ccc3);
+	
+	\nextgroupplot[title=BOA/TOA inferred (fold2),ylabel={}]
+	\addplot[L1Ccolor] table [x=Step, y = L2Af2_test2016_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	\addlegendentry{\acrfull{toa}}
+	
+	\addplot[L2Acolor] table [x=Step, y = L2Af2_test2016L2A_oa, col sep=comma] {images/L1CvsL2A/train.csv};
+	\coordinate (magnifyglass3) at (axis cs:800000,.8);
+	\addlegendentry{\acrfull{boa}}
+	
+	\coordinate (tttt1) at (axis cs:100000,.8);
+	\coordinate (tttt2) at (axis cs:400000,.85);
+	\coordinate (tttt3) at (axis cs:700000,.85);
+	
+	\coordinate (cccc1) at (rel axis cs:.4,.3);
+	\coordinate (cccc2) at (rel axis cs:.6,.3);
+	\coordinate (cccc3) at (rel axis cs:.8,.3);
+	
+	\spy[tumblue,size=1cm] on (tttt1) in node [fill=tumbluelight!20] at (cccc1);
+	\spy[tumblue,size=1cm] on (tttt2) in node [fill=tumbluelight!20] at (cccc2);
+	\spy[tumblue,size=1cm] on (tttt3) in node [fill=tumbluelight!20] at (cccc3);
+	
+	\end{groupplot}
+	\end{tikzpicture}  
+}
