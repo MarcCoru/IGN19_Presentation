@@ -26,31 +26,50 @@
   \titlepage
 \end{frame}
 
-{\setbeamercolor{background canvas}{bg=black}
+
+{\setbeamercolor{background canvas}{bg=white}
 	\begin{frame}[plain]
-	
 	\vfill
-	\Huge\color{white}
 	\begin{center}
-		\begin{columns}
-			\column{.5\textwidth}
-			\vspace{7em}
-			
-			\hfill 
-			Earth Observation Data
-			\column{.5\textwidth}
-			
-			\includegraphics[width=5cm]{images/epic1}
-			%\includegraphics[width=7cm]{images/fdl}
-		\end{columns}
+		\Huge\color{tumgraydark}
+		Hi!
+		\hspace{2em}\includegraphics[width=5cm]{images/marc}
 	\end{center}
-	
 	\vfill
 \end{frame}
 }
 
-\input{sections/intro}
 
+\begin{frame}
+\frametitle{Background}
+
+\tikzstyle{event} = [font=\small, text width=3.8cm, rounded corners=2em, inner sep=.7em]
+\tikzstyle{date} = [font=\small, fill=white]
+%
+%\vspace{2em}
+
+\begin{tikzpicture}[xscale=9, yscale=.85]
+
+\visible<1->{\node[anchor=east, label=Earth Observation] at (0,0){\includegraphics[width=3cm]{images/epicw1}};}
+\visible<4->{\node[anchor=west, label=Machine Learning] at (1.1,0){\lfcn{.75}};}
+
+\node[event, fill=tumorange!50] at (.2,1) {2012-2018 \\ \textbf{Bachelor/Master} \\ Geodesy and Geoinformation};
+
+\visible<2->{\node[event, fill=tumbluelight] at (.3,-1) {2014 \\ Interned at University of Otago, NZ. \\ Geodata Visualization};}
+
+\visible<3->{\node[event, fill=tumbluelight] at (.1,-3) {2016 \\ Erasmus-interned at Polish Earth Observation Center \\ \textbf{Opium Poppy Detection}};}
+
+\visible<4->{\node[event, fill=tumorange!50] at (.7,2) {2018-2022 \\ \textbf{PhD} with Supervisor from Computer Vision \\ Multi-temporal Earth Observation};}
+
+\visible<5->{\node[event, fill=tumbluelight] at (.7,-3) {2018 \\ Participant \\ Frontier Developments Lab \\ Disaster Relief with \textbf{CNN data fusion}};}
+
+\visible<6->{\node[event, fill=tumbluelight] at (.8,-.5) {2019 \\ Research Stay IRISA Obelix Lab in France \\ \textbf{Early Classification of Time Series}};}
+
+\end{tikzpicture}
+
+\end{frame}
+
+\input{sections/intro}
 
 \input{sections/research.tex}
 

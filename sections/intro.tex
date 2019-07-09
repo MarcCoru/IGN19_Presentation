@@ -1,84 +1,157 @@
 
+
+{\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain]
+	
+	\vfill
+	\Huge\color{white}
+	\begin{center}
+		\begin{columns}
+			\column{.5\textwidth}
+			\vspace{7em}
+			
+			\hfill 
+			Earth Observation Data
+			\column{.5\textwidth}
+			
+			\includegraphics[width=5cm]{images/epic1}
+			%\includegraphics[width=7cm]{images/fdl}
+		\end{columns}
+	\end{center}
+	
+	\vfill
+\end{frame}
+}
+
 \begin{frame}
-\frametitle{Optical Satellites}
+\frametitle{System Earth}
+
 \begin{columns}
-	\column{.5\textwidth}
-	
-%	
-%	\begin{itemize}[itemsep=.5em]
-%		\item<1-> Sensor measures \textbf{Digital Numbers} $\text{DN}(\lambda)$ for each wavelength $\lambda$. 
-%		\item<2-> \textbf{Digital Numbers} are normalized to \textbf{Radiance} 
-%		$L(\lambda), \left[\frac{W}{\text{sr}m^2}\right]$ by gain and offset calibration.
-%		\item<3-> Radiance is normalized to \textbf{top-of-atmosphere reflectance} $\rho(\lambda)$
-%		%		\item<4-> \textbf{Bottom-of-atmosphere reflectances} are reconstructed using a functional model of the atmosphere.
-%	\end{itemize}
-%	
-	%	Radiance $R_\lambda$ from measured Digital Numbers via calibrated gain $\alpha$ and offset $\beta$
-	%	\begin{equation*}
-	%		L_\lambda = \alpha \text{DN}_\lambda + \beta, \left[\frac{W}{\text{sr}m^1}\right]
-	%	\end{equation*}
-	%	
-	%	top-of-atmosphere reflectance $\rho_\lambda$ as normalized Radiance $R_\lambda$ with solar 
-	%	\begin{equation*}
-	%	\rho_\lambda = \frac{L_\lambda}{\cos(\varphi_\text{sun})}
-	%	\frac{
-	%		\pi d^2
-	%	}
-	%	{
-	%		E_\text{sun}(\lambda)
-	%	}
-	%	\end{equation*}
-	%	
-	%	\vspace{1em}
-	%	
-	%	\begin{itemize}
-	%		\item measured radiance $L(\lambda)$
-	%		\item solar irradiance $E_\text{sun}(\lambda)$
-	%		\item solar zenith angle $\varphi_\text{sun}$
-	%		\item squared Earth-Sun distance $d$ in AU
-	%	\end{itemize}
-	
 	
 	\column{.5\textwidth}
 	
-	
-	\begin{tikzpicture}
-	
-	
-	%	\draw [black,dotted, fill=tumbluelight,domain=110:70] plot ({13*cos(\x)}, {13*sin(\x)-12.8});
-	\draw [fill=tumivory,domain=110:70] plot ({10*cos(\x)}, {10*sin(\x)-10});
-	%	\draw [fill=tumbluelight,domain=110:70] plot ({12*cos(\x)}f, {12*sin(\x)-10});
-	
-	
-	\node(sun) at (-2,2) {\includegraphics[width=10mm]{images/icons/sun}};
-	\node[rotate=130,anchor=center](sat) at (2,2) {\includegraphics[width=10mm]{images/icons/sat2}};
-	
-	\node(px) at ({10*cos(90)}, {10*sin(90)-10.1}){
-		\begin{tikzpicture}[xscale=.5,yscale=.25]
-		\draw[fill=tumbluelight] (0,0) -- (1,0) -- (2,1) -- (1,1) -- (0,0);
-		\end{tikzpicture}
-		%\includegraphics[width=5mm]{images/icons/house}
-	};
-	
-	\draw[-stealth] (sun) -- node[midway,sloped]{\wave} (px);
-	\draw[-stealth] (px) -- node[midway,sloped]{\wave} (sat);
-	
-	\visible<3->{\draw[-stealth] (sun) -- node[midway,sloped]{\wave} (sat);
-		\draw[draw=tumgray] (px) -- node[at end,left]{$\varphi_\text{sun}$} ++(0,1.4); 
-		\draw [draw=tumgray, domain=130:90] plot ({1*cos(\x)}, {1*sin(\x)});
+	{
+		%		The Earth is a complex system.
+		%		Only some components is observable by 
+		%		\begin{itemize}
+		%			\item satellite-based or
+		%			\item in-situ observations
+		%		\end{itemize}
+		%		
+		
+		%	\begin{equation*}\V{y} = f({\M{X}})\end{equation*}
+		%	partially observe the complex system Earth
+		\textbf{Partially measuring} System Earth
+		{\Huge
+			\begin{equation*}
+			\M{X} = \sat\left({\earth}\right)
+			\end{equation*}
+		}
+		
+		\vspace{1em}
+		\textbf{knowledge extraction} through pattern recognition and machine learning
+		
+		{\Huge\begin{equation*}\V{?} = f({\M{X}})\end{equation*}}
 	}
 	
-	\node[above=.5em of sun]{$E_\text{sun}(\lambda)$};
-	\visible<1>{\node[above=4em of sat]{$DN(\lambda)$};}
-	\visible<2>{\node[above=4em of sat]{$L(\lambda)$};}
-	\visible<3>{\node[above=4em of sat]{$\rho_\text{toa}(\lambda)$};}
-	%	\visible<4>{\node[above=4em of sat]{$\rho_\text{boa}(\lambda)$};}
+	\column{.5\textwidth}
 	
-	%		\draw[red] (0,0) sin (1,2);
+	\begin{tikzpicture}[xscale=3, yscale=2]
+	\node(earth) at (0,0) {\includegraphics[width=7cm]{images/epicw1}};	
 	
-\end{tikzpicture}
+	\end{tikzpicture}
+	
+	
 \end{columns}
+
+%	\includegraphics[width=5cm]{images/Earth_gravity}
+%	\includegraphics[width=5cm]{images/epicw1}
+%	\includegraphics[width=5cm]{images/earthnullschool/sealevelpressure}
+%	\includegraphics[width=5cm]{images/earthnullschool/misery_index}
+%	\includegraphics[width=5cm]{images/earthnullschool/temp}
+%	\includegraphics[width=5cm]{images/epicw1}
 \end{frame}
+
+%\begin{frame}
+%\frametitle{Optical Satellites}
+%\begin{columns}
+%	\column{.5\textwidth}
+%	
+%%	
+%%	\begin{itemize}[itemsep=.5em]
+%%		\item<1-> Sensor measures \textbf{Digital Numbers} $\text{DN}(\lambda)$ for each wavelength $\lambda$. 
+%%		\item<2-> \textbf{Digital Numbers} are normalized to \textbf{Radiance} 
+%%		$L(\lambda), \left[\frac{W}{\text{sr}m^2}\right]$ by gain and offset calibration.
+%%		\item<3-> Radiance is normalized to \textbf{top-of-atmosphere reflectance} $\rho(\lambda)$
+%%		%		\item<4-> \textbf{Bottom-of-atmosphere reflectances} are reconstructed using a functional model of the atmosphere.
+%%	\end{itemize}
+%%	
+%	%	Radiance $R_\lambda$ from measured Digital Numbers via calibrated gain $\alpha$ and offset $\beta$
+%	%	\begin{equation*}
+%	%		L_\lambda = \alpha \text{DN}_\lambda + \beta, \left[\frac{W}{\text{sr}m^1}\right]
+%	%	\end{equation*}
+%	%	
+%	%	top-of-atmosphere reflectance $\rho_\lambda$ as normalized Radiance $R_\lambda$ with solar 
+%	%	\begin{equation*}
+%	%	\rho_\lambda = \frac{L_\lambda}{\cos(\varphi_\text{sun})}
+%	%	\frac{
+%	%		\pi d^2
+%	%	}
+%	%	{
+%	%		E_\text{sun}(\lambda)
+%	%	}
+%	%	\end{equation*}
+%	%	
+%	%	\vspace{1em}
+%	%	
+%	%	\begin{itemize}
+%	%		\item measured radiance $L(\lambda)$
+%	%		\item solar irradiance $E_\text{sun}(\lambda)$
+%	%		\item solar zenith angle $\varphi_\text{sun}$
+%	%		\item squared Earth-Sun distance $d$ in AU
+%	%	\end{itemize}
+%	
+%	
+%	\column{.5\textwidth}
+%	
+%	
+%	\begin{tikzpicture}
+%	
+%	
+%	%	\draw [black,dotted, fill=tumbluelight,domain=110:70] plot ({13*cos(\x)}, {13*sin(\x)-12.8});
+%	\draw [fill=tumivory,domain=110:70] plot ({10*cos(\x)}, {10*sin(\x)-10});
+%	%	\draw [fill=tumbluelight,domain=110:70] plot ({12*cos(\x)}f, {12*sin(\x)-10});
+%	
+%	
+%	\node(sun) at (-2,2) {\includegraphics[width=10mm]{images/icons/sun}};
+%	\node[rotate=130,anchor=center](sat) at (2,2) {\includegraphics[width=10mm]{images/icons/sat2}};
+%	
+%	\node(px) at ({10*cos(90)}, {10*sin(90)-10.1}){
+%		\begin{tikzpicture}[xscale=.5,yscale=.25]
+%		\draw[fill=tumbluelight] (0,0) -- (1,0) -- (2,1) -- (1,1) -- (0,0);
+%		\end{tikzpicture}
+%		%\includegraphics[width=5mm]{images/icons/house}
+%	};
+%	
+%	\draw[-stealth] (sun) -- node[midway,sloped]{\wave} (px);
+%	\draw[-stealth] (px) -- node[midway,sloped]{\wave} (sat);
+%	
+%	\visible<3->{\draw[-stealth] (sun) -- node[midway,sloped]{\wave} (sat);
+%		\draw[draw=tumgray] (px) -- node[at end,left]{$\varphi_\text{sun}$} ++(0,1.4); 
+%		\draw [draw=tumgray, domain=130:90] plot ({1*cos(\x)}, {1*sin(\x)});
+%	}
+%	
+%	\node[above=.5em of sun]{$E_\text{sun}(\lambda)$};
+%	\visible<1>{\node[above=4em of sat]{$DN(\lambda)$};}
+%	\visible<2>{\node[above=4em of sat]{$L(\lambda)$};}
+%	\visible<3>{\node[above=4em of sat]{$\rho_\text{toa}(\lambda)$};}
+%	%	\visible<4>{\node[above=4em of sat]{$\rho_\text{boa}(\lambda)$};}
+%	
+%	%		\draw[red] (0,0) sin (1,2);
+%	
+%\end{tikzpicture}
+%\end{columns}
+%\end{frame}
 
 \begin{frame}
 \frametitle{Acquired in regular time intervals}
@@ -250,8 +323,7 @@ yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
 \visible<3->{\node[rotate=260] at (-2.5,1.5){\includegraphics[width=15mm]{images/icons/sat2}};}
 
 
-%	\visible<4->{\node at (-1.5,1.4) {\includegraphics[width=10mm]{images/cloud}};
-%	}
+\visible<4->{\node at (-1.5,1.4) {\includegraphics[width=10mm]{images/cloud}};}
 
 \end{tikzpicture}
 
@@ -282,7 +354,7 @@ f_\text{vegetation}(\V{X}_t,\V{X}_{t+1},\V{X}_{t+2})
 \visible<1->{\includegraphics[width=.22\textwidth]{images/s2grid/1}}
 \visible<2->{\includegraphics[width=.22\textwidth]{images/s2grid/2}}
 \visible<3->{\includegraphics[width=.22\textwidth]{images/s2grid/3}}
-%	\visible<4->{\includegraphics[width=.22\textwidth]{images/s2grid/4}}
+\visible<4->{\includegraphics[width=.22\textwidth]{images/s2grid/4}}
 
 \vspace{1em}
 
@@ -312,7 +384,7 @@ Large, E. C. (1954). Growth stages in cereals illustration of the Feekes scale. 
 \raggedright
 
 \begin{description}\setlength\itemsep{1em}
-	\item[\color{tumblue}Problem:]<1-> \textbf{unsupervised learning} of a vegetation model \textbf{is difficult}
+	\item[\color{tumblue}Problem:]<1-> \textbf{un/self-supervised learning} of a vegetation model \textbf{is difficult}
 	\item[\color{tumblue}Solution:]<2-> re-framing as \textbf{supervised classification} of crop type labels
 	\item[\color{tumblue}Intuition:]<3-> A \textbf{supervised classification model} must \textbf{internalize} a learned \textbf{discriminative model} for the \textbf{vegetation}
 \end{description}
