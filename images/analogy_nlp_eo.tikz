@@ -6,11 +6,11 @@
 	\newcommand{\image}[1]{
 		\begin{tikzpicture}
 			\node(img){\includegraphics[width=2cm]{#1}};
-			\node[minimum width=.5em,minimum height=.5em, fill=tumbluelight, xshift=-1em] at (img)(rect){};
+			\node[minimum width=.5em,minimum height=.5em, fill=black, xshift=-1em] at (img)(rect){};
 			
-			\node[right=of rect, fill=tumbluelight,, inner sep=.2em, rounded corners=1em,  opacity=.2](m){$\drawmatrix$};
-			\draw[tumbluelight] (rect.north) -- (m.north);
-			\draw[tumbluelight] (rect.south) -- (m.south);
+			\node[right=of rect, fill=white, inner sep=.2em, rounded corners=1em, text opacity=1, text=black, opacity=.8](m){$\drawmatrix$};
+			\draw[black] (rect.north) -- (m.north);
+			\draw[black] (rect.south) -- (m.south);
 		\end{tikzpicture}
 	}
 
@@ -34,6 +34,8 @@
 		\node[right= 7em of e4](eo){$f(\M{X})$};
 		\node[right= 7em of t4](nlp){$f(\M{X})$};
 		
-		\draw[-stealth] (e4) -- node[midway,above]{EO model} (eo);
-		\draw[-stealth] (t4) -- node[midway,above]{NLP model} (nlp);
+		\draw[-stealth] (e4) -- node[midway,above, name=eomodel]{EO model} (eo);
+		\draw[-stealth] (t4) -- node[midway,above, name=nlpmodel]{NLP model} (nlp);
+		
+		\draw[Stealth-Stealth] (eomodel) to[bend left] node[midway, right]{use same model?} (nlpmodel);
 	\end{tikzpicture}

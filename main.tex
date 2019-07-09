@@ -15,8 +15,8 @@
 \setbeamertemplate{blocks}[rounded][shadow=false]
 
 \title{Learning Vegetation Models from Satellite Data}
-\subtitle{IGN getting-in-touch}
-\author[M. Rußwurm]{Marc Rußwurm}
+\subtitle{L'Information Grandeur Nature (IGN)---getting-in-touch}
+\author[M. Rußwurm]{Marc Rußwurm, advised by Dr. rer. nat. Marco Körner}
 \institute[TUM]{Technical University of Munich, Germany\\
                 Remote Sensing Technology}
 \date{July 10th, 2019}
@@ -31,9 +31,16 @@
 	\begin{frame}[plain]
 	\vfill
 	\begin{center}
-		\Huge\color{tumgraydark}
+		\Huge\color{black}
 		Hi!
 		\hspace{2em}\includegraphics[width=5cm]{images/marc}
+		\vspace{2em}
+		
+		\Large\raggedright
+		
+		Marc Rußwurm M.Sc. \\
+		\vspace{1em}
+		PhD Candidate at~\includegraphics[height=.9em]{images/TUM-white}~Chair of Remote Sensing Technology
 	\end{center}
 	\vfill
 \end{frame}
@@ -80,29 +87,36 @@
 \input{sections/earlyclassification}
 
 \begin{frame}
-	\frametitle{Research Agenda}
-	\framesubtitle{Supervision}
+	\frametitle{Research Agenda -- Supervision}
 	
-	\begin{tikzpicture}[xscale=1]
+	
+	\centering\begin{tikzpicture}[xscale=1]
 		\draw[-Stealth]  (0,0) node[left, at end]{strong} -- node[right, at end]{weak} (10,0) ;
-		\draw (1,-1) -- (1,1) node[above, at end]{(Conv)RNN};
-		\draw (4,-1) -- (4,1) node[above, at end]{Early Classification};
-		\draw (7,-1) -- (7,1);
+		\draw (1,-1) -- (1,1) node[above, at end, align=center]{(Conv)RNNs\\\small 2017/2018};
+		\draw (4,-1) -- (4,1) node[above, at end, align=center]{Early Classification\\\small 2019};
+		\draw (9,-1) -- (9,1) node[above, at end, align=center]{Self-supervision\\\small 2019--?};
 		
 	\end{tikzpicture}
 	
+	\Large
 	\begin{itemize}
-		\item away from strict supervised learning
-		\item large scale dataset creation
-		\item domain transfer between regions
-		\item vegetation modeling
+		\item \textbf{Trend:} away from strict supervised learning
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
+	\frametitle{Research Agenda -- Generalization}
+	
+	\includegraphics[width=\textwidth]{images/generalization}
+%	\begin{tikzpicture}[overlay]
+%		\includegraphics[width=5cm]{images/generalization}
+%	\end{tikzpicture}
+	
+\end{frame}
 
-\frametitle{Research Agenda}
-\framesubtitle{Generalization}
+\begin{frame}
+
+\frametitle{Research Agenda -- Challenge Generalization}
 
 \begin{columns}
 	\column{.5\textwidth}
@@ -117,7 +131,7 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Crop Type Labels in Europe}
+\frametitle{Building Large-Scale Crop Type Mapping Datasets}
 
 \begin{columns}
 	
@@ -136,264 +150,348 @@
 	\includegraphics[width=\textwidth]{images/europe_data2}
 	
 	
-\end{columns}
-\end{frame}
 
-
-{\setbeamercolor{background canvas}{bg=tumbluedark}
-	\begin{frame}[plain]
 	
-	\vfill
-	\Huge\color{white}
-	\begin{center}
-		\begin{columns}
-			\column{.5\textwidth}
-			\vspace{7em}
-			
-			\hfill 
-			The Dataset
-			\column{.5\textwidth}
-			
-			\includegraphics[width=\textwidth]{images/map/breizh_white}
-			%%			\includegraphics[width=5cm]{images/epic1}
-			%			\includegraphics[width=7cm]{images/fdl}
-		\end{columns}
-		\small\raggedleft Field Parcel Coverage in Brittany
-	\end{center}
-	
-	\vfill
-\end{frame}
-}
-
-\begin{frame}
-\frametitle{Organization}
-
-\begin{columns}
-\column{.5\textwidth}
-\only<1>{
-	
-	
-	\emph{Nomenclature des unités territoriales statistiques (NUTS)} as European standard of administrative Boundaries. 
-	\begin{description}
-		\item[NUTS-0] countries
-		\item[NUTS-1] states
-		\item[NUTS-2] districts
-		\item[NUTS-3] municipalities
-	\end{description}%NUTS-0 countries, NUTS-1 states, NUTS-2 districts, NUTS-3 municipalities. Add-on: All European Statistics (Eurostats) are collected in these administrative divisions.
-	
-}
-\only<2>{
-	Field Parcels
-	\begin{tabular}{lrrr}
-		\toprule
-		Departements & NUTS-3 & Parcels & Size \\
-		\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}
-		%			\midrule
-		\color{frh04color}\textbf{Morbihan} & FRH04 & 158522 & 4.3 Gb\\
-		\color{tumgraydark}\textbf{Côtes-d’Armor} & FRH01 & 221095  & 6.7 Gb \\
-		\color{frh02color}\textbf{Finistère} & FRH02 & 180565 & 6.2 Gb \\
-		\color{frh03color}\textbf{Ille-et-Vilaine} & FRH03 & 207993 & 6.8 Gb\\
-		\\
-		\midrule
-		Brittany & FRH0 & 768175\\
-		\bottomrule
-	\end{tabular}
-}
-\vspace{1em}
-
-we suggest a spatially distinct train/test split via these partitions. \\
-\vspace{1em}
-\textbf{Bonus:} Eurostat statistics are gathered on NUTS boundaries. 
-
-\column{.5\textwidth}
-\includegraphics[width=.9\textwidth]{images/map/regions}
-NUTS-3 regions within Brittany, France
-
 \end{columns}
 
+\vspace{2em}
+
+	\small\raggedright
+\textsl{
+	Rußwurm M., Lefèvre S., and Körner M (2019). \textbf{BreizhCrops: A Satellite Time Series Dataset for Crop Type Identification}. ICML 2019 Time Series Workshop. arXiv:1905.11893
+}
+
 \end{frame}
 
-
-\input{images/example_brc.tikz}
-\begin{frame}
-\frametitle{Corn Example}
-\examplecorn
-\end{frame}
-
 %
-%\begin{frame}
-%\frametitle{Examples}
-%\centering
-%%\externalize{beispiel}{%
-%\begin{tikzpicture}[node distance=.1em]
-%%	\visible<1>{
-%%	\node[font=\huge](veg) at (0,0){Vegetationsmodell};
-%%	\node[right=0em of veg](input){$\left(\satimage{1},\satimage{1},\satimage{3}\right)$};
-%%	}
-%\node[font=\huge, label=$f$](equals){$\leftarrow$};
-%%	\visible<2>{\node[right=0em of equals](input){\timeseries{input.csv}};}
-%\visible<1>{
-%	\node[right=0em of equals](input){\timeseries{prep74526670.csv}};}
-%
-%\visible<2>{\node[right=0em of equals](input){\timeseries{prep77770412.csv}};}
-%
-%\visible<1>{\node[left= of equals, font=\huge](probas){meadows};}
-%\visible<2>{\node[left= of equals, font=\huge](probas){corn};}
-%
-%
-%\end{tikzpicture}%
-%%}
+%{\setbeamercolor{background canvas}{bg=tumbluedark}
+%	\begin{frame}[plain]
+%	
+%	\vfill
+%	\Huge\color{white}
+%	\begin{center}
+%		\begin{columns}
+%			\column{.5\textwidth}
+%			\vspace{7em}
+%			
+%			\hfill 
+%			The Dataset
+%			\column{.5\textwidth}
+%			
+%			\includegraphics[width=\textwidth]{images/map/breizh_white}
+%			%%			\includegraphics[width=5cm]{images/epic1}
+%			%			\includegraphics[width=7cm]{images/fdl}
+%		\end{columns}
+%		\small\raggedleft Field Parcel Coverage in Brittany
+%	\end{center}
+%	
+%	\vfill
 %\end{frame}
-
-
-{\setbeamercolor{background canvas}{bg=tumbluedark}
-\begin{frame}[plain]
-
-\vfill
-\Huge\color{white}
-\begin{center}
-\begin{columns}
-\column{.5\textwidth}
-\vspace{7em}
-
-\hfill 
-Baseline Results
-\column{.5\textwidth}
-
-%			\includegraphics[width=5cm]{images/epic1}
-%\includegraphics[width=7cm]{images/fdl}
-\end{columns}
-\end{center}
-
-\vfill
-\end{frame}
-}
-
-\input{images/confmat.tikz}
-
-\begin{frame}
-\frametitle{Two Baseline Models}
-
-\Large
-Inspired by Models used in NLP, we implemented a \textbf{multi-layer LSTM} and a \textbf{(minified) Transformer encoder}.
-
-\vspace{1em}
-\normalsize
-
-%	\begin{table*}[b]
-%		\caption{Accuracy metrics for the Multi-layer bidirectional LSTM \cite{hochreiter1997long} and the Transformer-Encoder \cite{Vaswani:transformer}.}
-%		\label{tab:accuracies}
-%		\centering
-\begin{tabular}{lrrrrrrr}
-\toprule
-baseline & accuracy & $\kappa$ & mean f1 & mean precision  & mean recall \\
-\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}\cmidrule(lr){7-7}
-Transformer {\small (Vaswani et al., 2017)} & \textbf{0.69}  &  \textbf{0.63} & 0.57 & {0.60} & 0.56 \\
-LSTM {\small (Hochreiter and Schmidhuber, 1997)} & 0.68 & 0.62 & \textbf{0.59} & \textbf{0.63} & \textbf{0.58} \\
-\bottomrule
-\end{tabular}
-
-\vspace{1em}
-
-\Large
-\textbf{Takeaway:} 
-\begin{itemize}
-\item Models perform quite similar
-\item Potential for improvement
-\item well-defined classes accurately classified
-\item broadly defined classes systematically confused
-\end{itemize}
-%	\end{table*}
-
-\end{frame}
-
+%}
+%
 %\begin{frame}
-%\frametitle{Results}
-%\framesubtitle{LSTM Model}
-%\small
+%\frametitle{Organization}
+%
 %\begin{columns}
 %\column{.5\textwidth}
+%\only<1>{
+%	
+%	
+%	\emph{Nomenclature des unités territoriales statistiques (NUTS)} as European standard of administrative Boundaries. 
+%	\begin{description}
+%		\item[NUTS-0] countries
+%		\item[NUTS-1] states
+%		\item[NUTS-2] districts
+%		\item[NUTS-3] municipalities
+%	\end{description}%NUTS-0 countries, NUTS-1 states, NUTS-2 districts, NUTS-3 municipalities. Add-on: All European Statistics (Eurostats) are collected in these administrative divisions.
+%	
+%}
+%\only<2>{
+%	Field Parcels
+%	\begin{tabular}{lrrr}
+%		\toprule
+%		Departements & NUTS-3 & Parcels & Size \\
+%		\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}
+%		%			\midrule
+%		\color{frh04color}\textbf{Morbihan} & FRH04 & 158522 & 4.3 Gb\\
+%		\color{tumgraydark}\textbf{Côtes-d’Armor} & FRH01 & 221095  & 6.7 Gb \\
+%		\color{frh02color}\textbf{Finistère} & FRH02 & 180565 & 6.2 Gb \\
+%		\color{frh03color}\textbf{Ille-et-Vilaine} & FRH03 & 207993 & 6.8 Gb\\
+%		\\
+%		\midrule
+%		Brittany & FRH0 & 768175\\
+%		\bottomrule
+%	\end{tabular}
+%}
+%\vspace{1em}
 %
-%\begin{tabular}{rlcccc}
+%we suggest a spatially distinct train/test split via these partitions. \\
+%\vspace{1em}
+%\textbf{Bonus:} Eurostat statistics are gathered on NUTS boundaries. 
+%
+%\column{.5\textwidth}
+%\includegraphics[width=.9\textwidth]{images/map/regions}
+%NUTS-3 regions within Brittany, France
+%
+%\end{columns}
+%
+%\end{frame}
+%
+%
+%\input{images/example_brc.tikz}
+%\begin{frame}
+%\frametitle{Corn Example}
+%\examplecorn
+%\end{frame}
+%
+%%
+%%\begin{frame}
+%%\frametitle{Examples}
+%%\centering
+%%%\externalize{beispiel}{%
+%%\begin{tikzpicture}[node distance=.1em]
+%%%	\visible<1>{
+%%%	\node[font=\huge](veg) at (0,0){Vegetationsmodell};
+%%%	\node[right=0em of veg](input){$\left(\satimage{1},\satimage{1},\satimage{3}\right)$};
+%%%	}
+%%\node[font=\huge, label=$f$](equals){$\leftarrow$};
+%%%	\visible<2>{\node[right=0em of equals](input){\timeseries{input.csv}};}
+%%\visible<1>{
+%%	\node[right=0em of equals](input){\timeseries{prep74526670.csv}};}
+%%
+%%\visible<2>{\node[right=0em of equals](input){\timeseries{prep77770412.csv}};}
+%%
+%%\visible<1>{\node[left= of equals, font=\huge](probas){meadows};}
+%%\visible<2>{\node[left= of equals, font=\huge](probas){corn};}
+%%
+%%
+%%\end{tikzpicture}%
+%%%}
+%%\end{frame}
+%
+%
+%{\setbeamercolor{background canvas}{bg=tumbluedark}
+%\begin{frame}[plain]
+%
+%\vfill
+%\Huge\color{white}
+%\begin{center}
+%\begin{columns}
+%\column{.5\textwidth}
+%\vspace{7em}
+%
+%\hfill 
+%Baseline Results
+%\column{.5\textwidth}
+%
+%%			\includegraphics[width=5cm]{images/epic1}
+%%\includegraphics[width=7cm]{images/fdl}
+%\end{columns}
+%\end{center}
+%
+%\vfill
+%\end{frame}
+%}
+%
+%\input{images/confmat.tikz}
+%
+%\begin{frame}
+%\frametitle{Two Baseline Models}
+%
+%\Large
+%Inspired by Models used in NLP, we implemented a \textbf{multi-layer LSTM} and a \textbf{(minified) Transformer encoder}.
+%
+%\vspace{1em}
+%\normalsize
+%
+%%	\begin{table*}[b]
+%%		\caption{Accuracy metrics for the Multi-layer bidirectional LSTM \cite{hochreiter1997long} and the Transformer-Encoder \cite{Vaswani:transformer}.}
+%%		\label{tab:accuracies}
+%%		\centering
+%\begin{tabular}{lrrrrrrr}
 %\toprule
-%\textbf{\#} & \textbf{crop type} &  \textbf{prec.} & \textbf{rec.} & \textbf{$f_1$} & \textbf{\#samples} \\
-%\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}
-%%\midrule
-%1 & barley &         90 &          86 &          88 &     4982 \\
-%2 & wheat &         83 &          95 &          89 &    13850 \\
-%3 & corn &         93 &          \textbf{96} &          94 &    25059 \\
-%4 & fodder &         51 &          34 &          41 &     3449 \\
-%5 & fallow &         30 &           2 &           4 &     3863 \\
-%6 & misc. &         50 &          49 &          49 &    12499 \\
-%7 & orchards &         21 &           7 &          10 &      391 \\
-%8 & cereals &         74 &          47 &          57 &     4645 \\
-%9 & perm. meadows &         51 &          47 &          49 &    20966 \\
-%10 & protein crops &         42 &          61 &          50 &      498 \\
-%11 & rapeseed &         \textbf{96} &          94 &          \textbf{95} &     2664 \\
-%12 & temp. meadows &         56 &          68 &          62 &    29977 \\
-%13 & vegetables &         86 &          69 &          76 &     3114 \\
-%&                       &            &             &             &          \\
-%&                       &         \textbf{63} &          \textbf{58} &          \textbf{59} &   125957 \\
+%baseline & accuracy & $\kappa$ & mean f1 & mean precision  & mean recall \\
+%\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}\cmidrule(lr){7-7}
+%Transformer {\small (Vaswani et al., 2017)} & \textbf{0.69}  &  \textbf{0.63} & 0.57 & {0.60} & 0.56 \\
+%LSTM {\small (Hochreiter and Schmidhuber, 1997)} & 0.68 & 0.62 & \textbf{0.59} & \textbf{0.63} & \textbf{0.58} \\
 %\bottomrule
 %\end{tabular}
 %
+%\vspace{1em}
+%
+%\Large
+%\textbf{Takeaway:} 
+%\begin{itemize}
+%\item Models perform quite similar
+%\item Potential for improvement
+%\item well-defined classes accurately classified
+%\item broadly defined classes systematically confused
+%\end{itemize}
+%%	\end{table*}
+%
+%\end{frame}
+%
+%%\begin{frame}
+%%\frametitle{Results}
+%%\framesubtitle{LSTM Model}
+%%\small
+%%\begin{columns}
+%%\column{.5\textwidth}
+%%
+%%\begin{tabular}{rlcccc}
+%%\toprule
+%%\textbf{\#} & \textbf{crop type} &  \textbf{prec.} & \textbf{rec.} & \textbf{$f_1$} & \textbf{\#samples} \\
+%%\cmidrule(lr){1-1}\cmidrule(lr){2-2}\cmidrule(lr){3-3}\cmidrule(lr){4-4}\cmidrule(lr){5-5}\cmidrule(lr){6-6}
+%%%\midrule
+%%1 & barley &         90 &          86 &          88 &     4982 \\
+%%2 & wheat &         83 &          95 &          89 &    13850 \\
+%%3 & corn &         93 &          \textbf{96} &          94 &    25059 \\
+%%4 & fodder &         51 &          34 &          41 &     3449 \\
+%%5 & fallow &         30 &           2 &           4 &     3863 \\
+%%6 & misc. &         50 &          49 &          49 &    12499 \\
+%%7 & orchards &         21 &           7 &          10 &      391 \\
+%%8 & cereals &         74 &          47 &          57 &     4645 \\
+%%9 & perm. meadows &         51 &          47 &          49 &    20966 \\
+%%10 & protein crops &         42 &          61 &          50 &      498 \\
+%%11 & rapeseed &         \textbf{96} &          94 &          \textbf{95} &     2664 \\
+%%12 & temp. meadows &         56 &          68 &          62 &    29977 \\
+%%13 & vegetables &         86 &          69 &          76 &     3114 \\
+%%&                       &            &             &             &          \\
+%%&                       &         \textbf{63} &          \textbf{58} &          \textbf{59} &   125957 \\
+%%\bottomrule
+%%\end{tabular}
+%%
+%%
+%%\column{.5\textwidth}
+%%
+%%\confmat{images/data/BreizhCrops_rnn/npy/confmat_flat.csv}{3}{1}
+%%\end{columns}
+%%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Summary}
+%
+%\Large
+%
+%\begin{columns}[t]
 %
 %\column{.5\textwidth}
 %
-%\confmat{images/data/BreizhCrops_rnn/npy/confmat_flat.csv}{3}{1}
+%\visible<1->{
+%%	\textbf{Impact}
+%%	\vspace{1em}
+%%	
+%%	\begin{description}[itemsep=.5em]
+%%		\item large scale \textbf{real-world dataset}
+%%		\item effectively \textbf{unlimited data} (spatially and temporally)
+%%		\item \textbf{assessing generalization} over large regions
+%%		\item potential for further \textbf{vegetation characteristics} (drought indicator, early classification, crop yield)
+%%	\end{description}
+%\textbf{Summary}
+%\vspace{1em}
+%
+%\begin{itemize}[itemsep=.5em]
+%\item<1-> we gathered, compiled, harmonized a \textbf{large supervised classification dataset} (20 Gb of data) for crop type mapping
+%\item<2-> we \textbf{prove the feasibility} of classification with two deep neural network classifiers (LSTM and Transformer)
+%\item<3-> baslines \textbf{leave potential} \textbf{for improvement} by future research
+%\end{itemize}
+%
+%
+%}
+%
+%\column{.5\textwidth}
+%
+%\textbf{Challenges}
+%\vspace{1em}
+%
+%\begin{description}[itemsep=.5em]
+%\item<4-> \textbf{Imbalanced} class \textbf{labels}
+%\item<5-> Classes with \textbf{similar characteristics}
+%\item<6-> Non-Gaussian noise induced by \textbf{clouds}
+%\item<7-> \textbf{Regional} \textbf{variations} in the class distributions
+%\item<8-> \textbf{Spatial} \textbf{autocorrelation}
+%\item<9-> \textbf{Irregular} temporal \textbf{sampling} distance
+%\item<10-> \textbf{Variable} \textbf{sequence} length
+%\end{description}
+%
+%
+%
 %\end{columns}
+%
 %\end{frame}
 
+{\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain]
+	\vfill
+	\begin{center}
+		\Huge\color{tumwhite}
+		\only<1>{
+			\textbf{Thank you!}
+			\includegraphics[width=6cm]{images/Bavaria_sat}
+		}
+		\only<2>{
+			\textbf{Questions/Input?}
+			\includegraphics[width=7cm]{images/France_white}
+		}
+		%		\only<3>{
+		%			\textbf{Collaborations?}
+		%			\includegraphics[width=7cm]{images/France_white}
+		%		}
+		%		
+	\end{center}
+	
+	
+	\vspace{1em}	
+	\color{white}
+	{Twitter}: \textbf{marccoru} | {Github}: \textbf{marccoru} or \textbf{tum-lmf} | \includegraphics[height=.9em]{images/TUM-white}~{Chair} \textbf{lmf.bgu.tum.de/vision} \\ 
+	
+	\vspace{1em}
+	
+	\Large
+	\url{https://marccoru.github.io/}
+	
+	\vfill
+\end{frame}
+}
+
+
 \begin{frame}
-\frametitle{Summary}
+\frametitle{Thank you!}
 
-\Large
+\small
 
+\textbf{Papers:}
 \begin{columns}[t]
 
 \column{.5\textwidth}
 
-\visible<1->{
-%	\textbf{Impact}
-%	\vspace{1em}
-%	
-%	\begin{description}[itemsep=.5em]
-%		\item large scale \textbf{real-world dataset}
-%		\item effectively \textbf{unlimited data} (spatially and temporally)
-%		\item \textbf{assessing generalization} over large regions
-%		\item potential for further \textbf{vegetation characteristics} (drought indicator, early classification, crop yield)
-%	\end{description}
-\textbf{Summary}
-\vspace{1em}
-
-\begin{itemize}[itemsep=.5em]
-\item<1-> we gathered, compiled, harmonized a \textbf{large supervised classification dataset} (20 Gb of data) for crop type mapping
-\item<2-> we \textbf{prove the feasibility} of classification with two deep neural network classifiers (LSTM and Transformer)
-\item<3-> baslines \textbf{leave potential} \textbf{for improvement} by future research
+\begin{itemize}
+	\item Rußwurm, M. and Körner, M. (2017). \textbf{Temporal Vegetation Modelling using Long Short-Term Memory Networks for Crop Identification from Medium-Resolution Multi-Spectral Satellite Images}. In IEEE/ISPRS EarthVision 2017 Workshop, Proceedings of the IEEE CVPR Workshops. \textbf{\color{tumorange} Best Paper Award}
+	\item 	Rußwurm, M., Lefèvre, S., Courty, N., Emonet, R., Körner, M., \& Tavenard, R. (2019).\textbf{ End-to-end Learning for Early Classification of Time Series}. arXiv preprint arXiv:1901.10681.
+	\item Rußwurm, M., \& Körner, M. (2018). \textbf{Multi-temporal land cover classification with sequential recurrent encoders}. ISPRS International Journal of Geo-Information, 7(4), 129.
 \end{itemize}
 
-
-}
-
 \column{.5\textwidth}
+\begin{itemize}
+	\item Rußwurm, M., \& Körner, M. (2018). \textbf{Convolutional LSTMs for Cloud-Robust Segmentation of Remote Sensing Imagery}. NeurIPS2018 Spatiotemporal Workshop. https://openreview.net/pdf?id=Sye7df9CK7
+	\item Rudner, T. G. J.; Rußwurm, M.; Fil, J.; Pelich, R.; Bischke, B.; Kopačková, V.; Biliński, P. (2019) \textbf{Segmenting Flooded Buildings via Fusion of Multiresolution, Multisensor, and Multitemporal Satellite Imagery}. In AAAI.
+\end{itemize}
 
-\textbf{Challenges}
-\vspace{1em}
+\normalsize
 
-\begin{description}[itemsep=.5em]
-\item<4-> \textbf{Imbalanced} class \textbf{labels}
-\item<5-> Classes with \textbf{similar characteristics}
-\item<6-> Non-Gaussian noise induced by \textbf{clouds}
-\item<7-> \textbf{Regional} \textbf{variations} in the class distributions
-\item<8-> \textbf{Spatial} \textbf{autocorrelation}
-\item<9-> \textbf{Irregular} temporal \textbf{sampling} distance
-\item<10-> \textbf{Variable} \textbf{sequence} length
-\end{description}
+\vspace{1em}		
+\textbf{Twitter}
+\begin{itemize}
+	\item https://twitter.com/MarcCoru
+\end{itemize}
 
-
+\textbf{Github}
+\begin{itemize}
+	\item https://github.com/marccoru
+	\item https://github.com/TUM-LMF
+\end{itemize}
 
 \end{columns}
-
 \end{frame}
 
 \end{document}

@@ -41,6 +41,7 @@
 \begin{frame}
 \frametitle{Area of Interest in Bavaria}
 \includegraphics[width=\textwidth]{images/aoi}
+%\input{images/aoi.tikz}
 \end{frame}
 
 \input{images/encoder.tikz}
@@ -68,40 +69,40 @@
 \def\fps{3}
 \input{images/cells.tikz}
 
-\begin{frame}[t]
-	\frametitle{Convolutional Long-Short Term Memory Cells (ConvLSTM)}
-	
-	%	Reveal Sequence:
-	%	1: update, empty cell
-	%	2: forget gate
-	%	3: input gate + modulation gate + jmult
-	%	4: output gate
-	%	5: cell state
-	%	6: output
-	
-	\begin{columns}
-		\begin{column}{0.3\textwidth}
-			\begin{tabularx}{\textwidth}{l}
-				LSTM update: \\
-				$\VHidden_t,\VCellState_t  \leftarrow \VInput_t, \VHidden_{t-1}, \VCellState_{t-1}$\\
-				\\
-				\visible<2->{Internal gates:} \\
-				\visible<2->{$\VForgetGate_t = \sigma( \conv{\concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_f } + 1 )$} \\
-				\visible<3->{$\VInputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_i } ) $} \\
-				\visible<3->{$\VModulationGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_j } ) $} \\
-				\visible<4->{$\VOutputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_o} ) $} \\
-				\\
-				\visible<5->{Internal cell state:} \\
-				\visible<5->{$\VCellState_t = \VCellState_{t-1} \odot \VForgetGate_t + \VInputGate_t \odot \VModulationGate_t$} \\
-				\visible<6->{Output:} \\
-				\visible<6->{$\VHidden_t= \VOutputGate_t \odot \tanh(\VCellState_t) $} \\
-			\end{tabularx}
-		\end{column}
-		\begin{column}{0.7\textwidth}
-			\lstmexplain
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}[t]
+%	\frametitle{Convolutional Long-Short Term Memory Cells (ConvLSTM)}
+%	
+%	%	Reveal Sequence:
+%	%	1: update, empty cell
+%	%	2: forget gate
+%	%	3: input gate + modulation gate + jmult
+%	%	4: output gate
+%	%	5: cell state
+%	%	6: output
+%	
+%	\begin{columns}
+%		\begin{column}{0.3\textwidth}
+%			\begin{tabularx}{\textwidth}{l}
+%				LSTM update: \\
+%				$\VHidden_t,\VCellState_t  \leftarrow \VInput_t, \VHidden_{t-1}, \VCellState_{t-1}$\\
+%				\\
+%				\visible<2->{Internal gates:} \\
+%				\visible<2->{$\VForgetGate_t = \sigma( \conv{\concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_f } + 1 )$} \\
+%				\visible<3->{$\VInputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_i } ) $} \\
+%				\visible<3->{$\VModulationGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_j } ) $} \\
+%				\visible<4->{$\VOutputGate_t = \sigma( \conv{ \concat{ \VInput_t }{ \VHidden_{t-1} } }{ \MWeight_o} ) $} \\
+%				\\
+%				\visible<5->{Internal cell state:} \\
+%				\visible<5->{$\VCellState_t = \VCellState_{t-1} \odot \VForgetGate_t + \VInputGate_t \odot \VModulationGate_t$} \\
+%				\visible<6->{Output:} \\
+%				\visible<6->{$\VHidden_t= \VOutputGate_t \odot \tanh(\VCellState_t) $} \\
+%			\end{tabularx}
+%		\end{column}
+%		\begin{column}{0.7\textwidth}
+%			\lstmexplain
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 
 %\input{images/encoder.tikz}
@@ -145,7 +146,8 @@
 
 \centering\includegraphics[width=.8\textwidth]{images/lstm}
 
-	\small
+\vspace{2em}
+	\small\raggedright
 \textsl{
 	Rußwurm M., Körner M. (2018). \textbf{Multi-Temporal Land Cover Classification with Sequential Recurrent Encoders}. In ISPRS International Journal of Geo-Information. 
 }
@@ -159,7 +161,7 @@
 \begin{frame}
 
 \vfill
-\Huge\color{black}
+\Large\color{black}
 \begin{center}
 	\begin{columns}
 		\column{\textwidth}
@@ -189,6 +191,13 @@
 \frametitle{ConvLSTM robust to clouds}
 \input{images/scl.tikz}
 \input{images/clouds.tikz}
+
+\small\raggedright
+\textsl{
+	Rußwurm M. and Körner M (2018). \textbf{Convolutional LSTMs for Cloud-Robust Segmentation of Remote Sensing
+	Imagery}. NeurIPS 2018 workshop on \textsl{Modeling and decision-making in the spatiotemporal domain}. arXiv:1811.02471
+}
+
 \end{frame}
 
 

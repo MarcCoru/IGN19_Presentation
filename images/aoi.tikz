@@ -1,4 +1,4 @@
-\tikzstyle{annotation} = [fill=tumgraylight, rounded corners]
+%\tikzstyle{annotation} = [fill=tumgraylight, rounded corners]
 
 \tikzset{pic shift/.store in=\shiftcoord,
 	pic shift={(0,0)},

@@ -29,7 +29,7 @@
 	\begin{columns}
 		\column{.5\textwidth}
 		
-		Research Stay
+		Research Stay Winter 2019
 		\begin{itemize}[itemsep=1em]
 			\item Prof. \textbf{Sebastien Lefèvre} and Prof. \textbf{Romain Tavenard}
 			\item Obelix: \textbf{Environment observation} with \textbf{complex imagery}
@@ -49,7 +49,7 @@
 
 
 \tikzstyle{rnn}=[draw,circle]
-\tikzstyle{annot}=[rounded corners, fill=colorblue!20]
+%\tikzstyle{annot}=[rounded corners, fill=colorblue!20]
 \colorlet{colortrain}{colorblue}
 \colorlet{colorinfer}{colororange}
 \tikzstyle{infer}=[-stealth, shorten >=.0em, shorten <=.0em, colorinfer]
@@ -64,19 +64,19 @@
 	
 	\visible<2->{
 		%\draw (-2,-2) to[grid with coordinates] (8,4);
-		\node[annot, yshift=3em](wiggle1) at ($ (a)!0.3!(b) $) {event \#1};
-		\draw (wiggle1) -- (-1.5,0);
-		\draw (wiggle1) -- (5.5,-1);
+		\node[annotation, yshift=3em](wiggle1) at ($ (a)!0.3!(b) $) {event \#1};
+		\draw[annot] (wiggle1) -- (-1.5,0);
+		\draw[annot] (wiggle1) -- (5.5,-1);
 	}
 	\visible<3->{
-		\node[annot, yshift=-5em](wiggle2) at ($ (a)!0.3!(b) $) {event \#2};
-		\draw (wiggle2) -- (1,0);
-		\draw (wiggle2) -- (7.5,0);
+		\node[annotation, yshift=-5em](wiggle2) at ($ (a)!0.3!(b) $) {event \#2};
+		\draw[annot] (wiggle2) -- (1,0);
+		\draw[annot] (wiggle2) -- (7.5,0);
 	}
 	
 	\visible<4->{
 		\draw[very thick] (8.5,-2) -- (8.5,2); 
-		\node[annot, yshift=-5em, anchor=east](stop) at (10,-1) {...we could stop here};
+		\node[annotation, yshift=-5em, anchor=east](stop) at (10,-1) {...we could stop here};
 %		\draw[shorten >=1em] (stop)++(2,0.5) -- (8,0);
 	}
 	\end{tikzpicture}
