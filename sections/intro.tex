@@ -1,125 +1,30 @@
 
-
-{\setbeamercolor{background canvas}{bg=black}
-	\begin{frame}[plain]
-	
-	\vfill
-	\Huge\color{white}
-	\begin{center}
-		\begin{columns}
-			\column{.5\textwidth}
-			\vspace{7em}
-			
-			\hfill 
-			Earth Observation Data
-			\column{.5\textwidth}
-			
-			\includegraphics[width=5cm]{images/epic1}
-			%\includegraphics[width=7cm]{images/fdl}
-		\end{columns}
-	\end{center}
-	
-	\vfill
-\end{frame}
-}
-
-\begin{frame}
-\frametitle{System Earth}
-
-\begin{columns}
-	
-	\column{.5\textwidth}
-	
-	{
-		%		The Earth is a complex system.
-		%		Only some components is observable by 
-		%		\begin{itemize}
-		%			\item satellite-based or
-		%			\item in-situ observations
-		%		\end{itemize}
-		%		
-		
-		%	\begin{equation*}\V{y} = f({\M{X}})\end{equation*}
-		%	partially observe the complex system Earth
-		\textbf{Partially measuring} System Earth
-		{\Huge
-			\begin{center}
-				\begin{tikzpicture}[remember picture]
-					\node[draw=none, rounded corners](eo){$\M{X} = \sat\left({\earth}\right)$};
-				\end{tikzpicture}
-			\end{center}
-		}
-		
-		\vspace{1em}
-		\textbf{knowledge extraction} through pattern recognition and machine learning
-		
-		{\Huge
-			\begin{center}
-				\begin{tikzpicture}[remember picture]
-				\node[draw=none, rounded corners](ml){$\V{?} = f({\M{X}})$};
-				\end{tikzpicture}
-			\end{center}
-		}
-		
-	}
-	
-	\column{.5\textwidth}
-	
-	\begin{tikzpicture}[xscale=3, yscale=2]
-	\node(earth) at (0,0) {\includegraphics[width=7cm]{images/epicw1}};	
-	
-	\end{tikzpicture}
-	
-	
-	
-	
-\end{columns}
-
-
-\begin{tikzpicture}[remember picture,overlay]
-%\draw (0,1) to[grid with coordinates] (10,7);
-\visible<2->{
-\node[fill=tumbluedark, text=white, font=\Large, rounded corners](annoteo) at (7,6){Earth Observation Research};
-\draw[annot] (annoteo.west)  to[bend right] (sat);
-}
-
-\visible<3->{
-\node[fill=tumbluedark, text=white, font=\Large, rounded corners](annotml) at (7,3.5){Machine Learning Research};
-\draw[annot] (annotml.west)  to[bend right] (ml);
-}
-
-\end{tikzpicture}
-
-
-\end{frame}
-
-
-{\setbeamercolor{background canvas}{bg=tumbluedark}
-	\begin{frame}[plain]
-	
-	\vfill
-	\Huge\color{white}
-	\begin{center}
-		\begin{columns}
-			\column{\textwidth}
-			\vspace{7em}
-			
-			\hfill 
-			Research Agenda: \qquad $\V{?} = f\left({\sat\left({\earth}\right)}\right)$ \hspace{5em}
-%			\column{.5\textwidth}
-%			\Huge
-%			\begin{center}
-%
-%			\end{center}
+%{\setbeamercolor{background canvas}{bg=tumbluedark}
+%	\begin{frame}[plain]
+%	
+%	\vfill
+%	\Huge\color{white}
+%	\begin{center}
+%		\begin{columns}
+%			\column{\textwidth}
+%			\vspace{7em}
 %			
-%			\includegraphics[width=5cm]{images/epic1}
-			%\includegraphics[width=7cm]{images/fdl}
-		\end{columns}
-	\end{center}
-	
-	\vfill
-\end{frame}
-}
+%			\hfill 
+%			Research Agenda: \qquad $\V{?} = f\left({\sat\left({\earth}\right)}\right)$ \hspace{5em}
+%%			\column{.5\textwidth}
+%%			\Huge
+%%			\begin{center}
+%%
+%%			\end{center}
+%%			
+%%			\includegraphics[width=5cm]{images/epic1}
+%			%\includegraphics[width=7cm]{images/fdl}
+%		\end{columns}
+%	\end{center}
+%	
+%	\vfill
+%\end{frame}
+%}
 
 
 %\begin{frame}
@@ -266,45 +171,45 @@
 %\end{columns}
 %\end{frame}
 
-\begin{frame}
-\frametitle{Example \sat: Sentinel 2 Satellites}
-
-%	\includemovie[
-%	poster,
-%	text={\small(Loading Circle-m-increase3.mp4)}
-%	]{6cm}{6cm}{images/s2orbits.mp4}
-%	
-%	\movie{loaded}{images/s2orbits.avi}
-
-\begin{columns}
-\column{.5\textwidth}
-
-\Large
-\begin{itemize}
-\item<1-> polar sun-synchronous orbit
-\item<2-> single orbit circa 100 minutes
-\item<3-> revisit same location after 5 days
-\item<4-> acquisition stripe of 290km width
-\item<5-> 13 spectral bands
-\item<6-> ground resolution 10-60m
-\item<7-> global coverage and free of charge
-\end{itemize}
-
-\column{.5\textwidth}
-%		\only<1>{\includegraphics[width=\textwidth]{images/s2orbits/1}}
-%		\only<2>{\includegraphics[width=\textwidth]{images/s2orbits/2}}
-%		\only<3>{\includegraphics[width=\textwidth]{images/s2orbits/3}}
-\only<1>{\includegraphics[width=\textwidth]{images/s2orbits/14}}
-\only<2>{\includegraphics[width=\textwidth]{images/s2orbits/19}}
-\only<3>{\includegraphics[width=\textwidth]{images/s2orbits/24}}
-\only<4>{\includegraphics[width=\textwidth]{images/s2orbits/35}}
-\only<5>{\includegraphics[width=\textwidth]{images/s2orbits/36}}
-\only<6>{\includegraphics[width=\textwidth]{images/s2orbits/37}}
-\only<7>{\includegraphics[width=\textwidth]{images/s2orbits/48}}
-\tiny\url{https://www.esa.int/spaceinvideos/Videos/2016/08/Sentinel-2_global_coverage}
-\end{columns}
-
-\end{frame}
+%\begin{frame}
+%\frametitle{Example \sat: Sentinel 2 Satellites}
+%
+%%	\includemovie[
+%%	poster,
+%%	text={\small(Loading Circle-m-increase3.mp4)}
+%%	]{6cm}{6cm}{images/s2orbits.mp4}
+%%	
+%%	\movie{loaded}{images/s2orbits.avi}
+%
+%\begin{columns}
+%\column{.5\textwidth}
+%
+%\Large
+%\begin{itemize}
+%\item<1-> polar sun-synchronous orbit
+%\item<2-> single orbit circa 100 minutes
+%\item<3-> revisit same location after 5 days
+%\item<4-> acquisition stripe of 290km width
+%\item<5-> 13 spectral bands
+%\item<6-> ground resolution 10-60m
+%\item<7-> global coverage and free of charge
+%\end{itemize}
+%
+%\column{.5\textwidth}
+%%		\only<1>{\includegraphics[width=\textwidth]{images/s2orbits/1}}
+%%		\only<2>{\includegraphics[width=\textwidth]{images/s2orbits/2}}
+%%		\only<3>{\includegraphics[width=\textwidth]{images/s2orbits/3}}
+%\only<1>{\includegraphics[width=\textwidth]{images/s2orbits/14}}
+%\only<2>{\includegraphics[width=\textwidth]{images/s2orbits/19}}
+%\only<3>{\includegraphics[width=\textwidth]{images/s2orbits/24}}
+%\only<4>{\includegraphics[width=\textwidth]{images/s2orbits/35}}
+%\only<5>{\includegraphics[width=\textwidth]{images/s2orbits/36}}
+%\only<6>{\includegraphics[width=\textwidth]{images/s2orbits/37}}
+%\only<7>{\includegraphics[width=\textwidth]{images/s2orbits/48}}
+%\tiny\url{https://www.esa.int/spaceinvideos/Videos/2016/08/Sentinel-2_global_coverage}
+%\end{columns}
+%
+%\end{frame}
 
 %
 %
@@ -374,46 +279,54 @@ Vegetation Modeling
 \node[right=of plus](o2){${\text{6O}}_{\text{2}}$};
 \end{scope}
 
-\visible<2-4,9>{
-	\node[below left=of co2](annotco2){Climate Change};
+\visible<2-4,10>{
+	\node[below left=of co2](annotco2){climate change};
 	\draw[annot] (annotco2) -- (co2.south);
 	
-	\node[below=of h2o](annoth2o){Drought/Water};
+	\node[below=of h2o](annoth2o){water/drought};
 	\draw[annot] (annoth2o) -- (h2o.south);
 	
-	\node[below=of sugar](annotsugar){Biomass};
+	\node[below=of sugar](annotsugar){biomass/crop yield};
 	\draw[annot] (annotsugar) -- (sugar.south);
 	
-	\node[below right=of o2](annoto2){Atmosphere};
+	\node[below right=of o2](annoto2){atmosphere};
 	\draw[annot] (annoto2) -- (o2.south);
 }
 
+
 \visible<3->{
-\node[above left=of arrow](sun) {\includegraphics[width=10mm]{images/icons/sun}};
-\node[above right=3em and 2em of arrow, label=right:$\M{x}$](sat) {\includegraphics[width=10mm, angle=130]{images/icons/sat2}};
-
-\draw[-stealth] (sun) -- node[midway,sloped]{\wave} ($ (arrow)+(0,1.5em) $);
-\draw[-stealth] ($ (arrow)+(0,1.5em) $) -- node[midway,sloped]{\wave} (sat);
-}
-
-\visible<4->{
 \node[fill=tumbluedark, rounded corners, font=\bfseries, text=white, inner sep=1em] at (co2){?};
 \node[fill=tumbluedark, rounded corners, font=\bfseries, text=white, inner sep=1em] at (h2o){?};
 \node[fill=tumbluedark, rounded corners, font=\bfseries, text=white, inner xsep=2em, inner ysep=1em] at (sugar){?};
 \node[fill=tumbluedark, rounded corners, font=\bfseries, text=white, inner sep=1em] at (o2){?};
 }
 
+\visible<4->{
+	\node[above left=of arrow](sun) {\includegraphics[width=10mm]{images/icons/sun}};
+	\node[above right=3em and 2em of arrow](sat) {\includegraphics[width=10mm, angle=130]{images/icons/sat2}};
+	
+	\draw[-stealth] (sun) -- node[midway,sloped]{\wave} ($ (arrow)+(0,1.5em) $);
+	\draw[-stealth] ($ (arrow)+(0,1.5em) $) -- node[midway,sloped]{\wave} (sat);
+}
+
+\visible<4-5>{
+\node[right=0em of sat](xsat){$\M{x}=(\V{x}_t,\V{x}_{t+1},\dots,\V{x}_T)$};	
+}
+
 \visible<5->{
 \node[fit=(co2)(h2o)(sugar)(o2), fill=black, rounded corners, font=\bfseries\Large, text=white, inner sep=1em, text height=1.5ex,
 text depth=.25ex](fveg){$f_\text{vegetation}$};
-\node[right=0em of fveg, font=\Large]{$\left(\V{x}_t,\V{x}_{t+1},\dots,\V{x}_T\right)$};
 }
 
 \visible<6->{
-\node[left=0em of fveg, font=\Large](yhat){$\hat{\V{y}}=$};
+\node[right=0em of fveg, font=\Large]{$\left(\V{x}_t,\V{x}_{t+1},\dots,\V{x}_T\right)$};
 }
 
 \visible<7->{
+\node[left=0em of fveg, font=\Large](yhat){$\hat{\V{y}}=$};
+}
+
+\visible<8->{
 	\node[left=of yhat, font=\Large](y){$\V{y}$};
 	\draw[Stealth-Stealth] (yhat) -- node[midway, above, name=loss]{$\mathcal{L}$} (y);
 	\draw[-Stealth] (loss) to[bend left] node[midway, above]{$\frac{\partial f}{\partial \mathcal{L}}$} (fveg);
@@ -421,9 +334,9 @@ text depth=.25ex](fveg){$f_\text{vegetation}$};
 
 \node[below=2em of arrow, text width=.9\textwidth] {
 \begin{description}\setlength\itemsep{.5em}
-\visible<5-8>{\item[\color{tumblue}Problem:] \textbf{un/self-supervised learning} of a vegetation model \textbf{is difficult}}
-\visible<6-8>{\item[\color{tumblue}Solution:] re-framing as \textbf{supervised classification} of crop type labels $\V{y} \in \{y_\text{corn},y_\text{meadow},\dots\}$}
-\visible<8>{\item[\color{tumblue}Intuition:] A \textbf{supervised classification model} must \textbf{internalize} a learned \textbf{discriminative model} for the \textbf{vegetation}}
+\visible<6-9>{\item[\color{tumblue}Problem:] \textbf{un/self-supervised learning} of a vegetation model \textbf{is difficult}}
+\visible<7-9>{\item[\color{tumblue}(Proxy)-Solution:] re-framing as \textbf{supervised classification} of crop type labels $\V{y} \in \{y_\text{corn},y_\text{meadow},\dots\}$}
+\visible<9>{\item[\color{tumblue}Intuition:] A \textbf{supervised classification model} must \textbf{internalize} a learned \textbf{discriminative model} for the \textbf{vegetation}}
 \end{description}
 };
 
@@ -531,6 +444,10 @@ yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
 	
 	\column{.5\textwidth}
 	
+	Given a time series of satellite data $\M{x}=(\V{x}_1,\V{x}_2,\dots,\V{x}_T)$ which crop type $\V{y} \in {y_\text{corn},y_\text{meadow},\dots}$ is cultivated is on the field?
+	
+	\vspace{1em}
+	
 	{\Large
 		\only<1>{
 			\begin{equation*}
@@ -550,7 +467,7 @@ yslant=0.5,xslant=-1},yslant=0.5,xslant=-1
 	}
 	
 	
-	\vspace{2em}
+	\vspace{1em}
 	
 	
 	\visible<1->{\includegraphics[width=.22\textwidth]{images/s2grid/1}}

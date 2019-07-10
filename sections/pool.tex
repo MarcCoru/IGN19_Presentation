@@ -1,0 +1,198 @@
+\begin{frame}
+\frametitle{Area of Interest in Bavaria}
+\includegraphics[width=\textwidth]{images/aoi}
+%\input{images/aoi.tikz}
+\end{frame}
+
+
+{\setbeamercolor{background canvas}{bg=black}
+	\begin{frame}[plain]
+	
+	\vfill
+	\Huge\color{white}
+	\begin{center}
+		\begin{columns}
+			\column{.5\textwidth}
+			\vspace{7em}
+			
+			\hfill 
+			Earth Observation Data
+			\column{.5\textwidth}
+			
+			\includegraphics[width=5cm]{images/epic1}
+			%\includegraphics[width=7cm]{images/fdl}
+		\end{columns}
+	\end{center}
+	
+	\vfill
+\end{frame}
+}
+
+\begin{frame}
+\frametitle{System Earth}
+
+\begin{columns}
+
+\column{.5\textwidth}
+
+{
+	%		The Earth is a complex system.
+	%		Only some components is observable by 
+	%		\begin{itemize}
+	%			\item satellite-based or
+	%			\item in-situ observations
+	%		\end{itemize}
+	%		
+	
+	%	\begin{equation*}\V{y} = f({\M{X}})\end{equation*}
+	%	partially observe the complex system Earth
+	\textbf{Partially measuring} System Earth
+	{\Huge
+		\begin{center}
+			\begin{tikzpicture}[remember picture]
+			\node[draw=none, rounded corners](eo){$\M{X} = \sat\left({\earth}\right)$};
+			\end{tikzpicture}
+		\end{center}
+	}
+	
+	\vspace{1em}
+	\textbf{knowledge extraction} through pattern recognition and machine learning
+	
+	{\Huge
+		\begin{center}
+			\begin{tikzpicture}[remember picture]
+			\node[draw=none, rounded corners](ml){$\V{?} = f({\M{X}})$};
+			\end{tikzpicture}
+		\end{center}
+	}
+	
+}
+
+\column{.5\textwidth}
+
+\begin{tikzpicture}[xscale=3, yscale=2]
+\node(earth) at (0,0) {\includegraphics[width=7cm]{images/epicw1}};	
+
+\end{tikzpicture}
+
+
+
+
+\end{columns}
+
+
+\begin{tikzpicture}[remember picture,overlay]
+%\draw (0,1) to[grid with coordinates] (10,7);
+\visible<2->{
+\node[fill=tumbluedark, text=white, font=\Large, rounded corners](annoteo) at (7,6){Earth Observation Research};
+\draw[annot] (annoteo.west)  to[bend right] (sat);
+}
+
+\visible<3->{
+\node[fill=tumbluedark, text=white, font=\Large, rounded corners](annotml) at (7,3.5){Machine Learning Research};
+\draw[annot] (annotml.west)  to[bend right] (ml);
+}
+
+\end{tikzpicture}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Going Big...}
+
+\includegraphics[width=5cm]{images/EuroCrops}
+\includegraphics[width=5cm]{images/France}
+\includegraphics[width=4cm]{images/Bavaria}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Supported by Google Research Credits}
+
+\includegraphics[width=.3\textwidth]{images/google_research_credits}
+\includegraphics[width=.3\textwidth]{images/google}
+\includegraphics[width=.2\textwidth]{images/earth-engine-logo}
+%\includegraphics[width=3cm]{images/250px-Google-Cloud-Storage-Logo}
+%\includegraphics[width=3cm]{images/Google_Compute_Engine_logo}
+%\includegraphics[width=3cm]{images/google_cloud_sql}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Augmenting Classification Models}
+
+\begin{columns}
+	
+	\column{.5\textwidth}
+	\begin{center}
+		
+		\input{images/backprop_example.tikz}
+	\end{center}
+	\column{.5\textwidth}
+	\input{images/qualitative_example.tikz}
+	
+	
+\end{columns}
+
+\end{frame}
+
+
+%\begin{frame}
+%	\frametitle{Autoregressive Classification Model}
+%	
+%	\input{images/classmodel.tikz}
+%	
+%\end{frame}
+
+
+\begin{frame}
+\frametitle{Early Classification on Remote Sensing Data}
+\input{images/example.tikz}
+
+\url{https://arxiv.org/abs/1901.10681}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Multi-Layer RNN baseline}
+
+\input{images/confmat.tikz}
+
+\begin{columns}
+	
+	\column{.5\textwidth}
+	\textbf{Precision}
+	
+	\confmat{images/data/BreizhCrops_rnn/npy/confmat_flat.csv}{3}{1}
+	
+	\column{.5\textwidth}
+	\textbf{Recall}
+	
+	\confmat{images/data/BreizhCrops_rnn/npy/confmat_flat.csv}{4}{1}
+	
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Transformer baseline}
+
+\input{images/confmat.tikz}
+
+\begin{columns}
+
+\column{.5\textwidth}
+\confmat{images/data/BreizhCrops_transformer/npy/confmat_flat.csv}{3}{1}
+
+\column{.5\textwidth}
+\confmat{images/data/BreizhCrops_transformer/npy/confmat_flat.csv}{4}{1}
+
+\end{columns}
+
+\end{frame}
+
